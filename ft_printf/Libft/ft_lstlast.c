@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/20 13:44:03 by btani             #+#    #+#             */
+/*   Updated: 2022/10/20 13:49:35 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printnbr(int n)
+t_list	*ft_lstlast(t_list *lst)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	if (!lst)
+		return (0);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }

@@ -12,13 +12,14 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# include "Libft/libft.h"
 # include <unistd.h>
 # include <stdarg.h>
 
 int		ft_countdec(int n);
 int		ft_countdec_uns(unsigned int n);
 int		ft_counthexa(unsigned long n);
-int		ft_printchar(char c);
+int		ft_printchar(int c);
 int		ft_printf(const char *s, ...);
 void	ft_printhexa(unsigned long n);
 int		ft_printhexa1(unsigned int n, char type);

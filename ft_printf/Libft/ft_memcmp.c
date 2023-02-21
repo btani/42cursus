@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/06 16:13:27 by btani             #+#    #+#             */
+/*   Updated: 2022/10/06 16:19:35 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_printnbr(int n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	unsigned const char	*st1;
+	unsigned const char	*st2;
+	size_t				i;
+
+	st1 = s1;
+	st2 = s2;
+	i = 0;
+	while (i < n)
+	{
+		if (st1[i] != st2[i])
+			return (st1[i] - st2[i]);
+		i++;
+	}
+	return (0);
 }

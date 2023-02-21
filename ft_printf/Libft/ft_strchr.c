@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/04 19:09:44 by btani             #+#    #+#             */
+/*   Updated: 2022/10/04 19:21:35 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printnbr(int n)
+char	*ft_strchr(const char *s, int c)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{	
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)(s + i));
+	return (NULL);
 }

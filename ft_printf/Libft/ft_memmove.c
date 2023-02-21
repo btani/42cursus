@@ -1,19 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/04 15:30:40 by btani             #+#    #+#             */
+/*   Updated: 2022/10/10 17:01:38 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_printnbr(int n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	char	*s;
+	char	*d;
+	size_t	i;
+
+	s = (char *) src;
+	d = (char *) dest;
+	i = 0;
+	if (!src && !dest)
+		return (NULL);
+	if (d > s)
+	{
+		while (n-- > 0)
+			d[n] = s[n];
+	}
+	else
+	{	
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
+	return (dest);
 }

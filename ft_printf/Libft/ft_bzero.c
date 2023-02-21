@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/03 18:26:26 by btani             #+#    #+#             */
+/*   Updated: 2022/10/03 18:26:33 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_printnbr(int n)
+void	ft_bzero(void *s, size_t n)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	size_t	a;
+	char	*f;
+
+	f = s;
+	a = 0;
+	while (a < n)
+	{
+		*f = '\0';
+		f++;
+		a++;
+	}
 }

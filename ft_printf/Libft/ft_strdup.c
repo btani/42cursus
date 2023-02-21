@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/11 18:40:11 by btani             #+#    #+#             */
+/*   Updated: 2022/10/11 19:16:20 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printnbr(int n)
+char	*ft_strdup(const char *s)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	char	*s2;
+	int		i;
+
+	i = 0;
+	s2 = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!s2)
+		return (NULL);
+	while (s[i])
+	{
+		s2[i] = s[i];
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
 }

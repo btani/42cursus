@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 17:53:57 by btani             #+#    #+#             */
-/*   Updated: 2022/11/09 15:56:52 by btani            ###   ########.fr       */
+/*   Created: 2022/10/18 18:18:33 by btani             #+#    #+#             */
+/*   Updated: 2022/10/18 18:18:44 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	i;
-	int	res;
-	int	sign;
+	char	*substring;
+	size_t	i;
 
 	i = 0;
-	res = 0;
-	sign = 1;
-	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
-		i++;
-	if (nptr[i] == '-')
-		sign = -1;
-	if (nptr[i] == '-' || nptr[i] == '+')
-		i++;
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	if (start > (size_t)ft_strlen(s))
+		len = 0;
+	if (len > ((size_t)ft_strlen(s) - start))
+		len = ((size_t)ft_strlen(s) - start);
+	substring = (char *)ft_calloc((len + 1), sizeof(char));
+	if (!substring)
+		return (NULL);
+	while (i < len)
 	{
-		res = (res * 10) + (nptr[i] - '0');
+		substring[i] = s[start];
 		i++;
+		start++;
 	}
-	return (res * sign);
+	substring[i] = '\0';
+	return (substring);
 }

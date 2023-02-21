@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/11 16:32:00 by btani             #+#    #+#             */
+/*   Updated: 2022/10/16 14:24:27 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printnbr(int n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	void	*a;
+
+	if (nmemb == 0 || size == 0)
+		a = malloc(1);
+	else
+	{
+		a = (void *)malloc(nmemb * size);
+		if (nmemb > SIZE_MAX / size || !a)
+			return (NULL);
+		ft_memset(a, 0, nmemb * size);
+	}
+	return (a);
 }

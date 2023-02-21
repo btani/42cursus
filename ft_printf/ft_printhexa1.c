@@ -9,6 +9,7 @@
 /*   Updated: 2022/10/26 16:54:51 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_printhexa1(unsigned int n, char type)
@@ -25,8 +26,8 @@ int	ft_printhexa1(unsigned int n, char type)
 		return (0);
 	if (a == 0)
 		return (write (1, "0", 1));
-	if (n >= 16)
+	if (a >= 16)
 		ft_printhexa1 (a / 16, type);
 	write (1, &s[(int)(a % 16)], 1);
-	return (ft_counthexa(n));
+	return (ft_counthexa(a));
 }

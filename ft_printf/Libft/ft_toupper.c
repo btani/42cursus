@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/04 18:30:30 by btani             #+#    #+#             */
+/*   Updated: 2022/10/04 19:09:04 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_printnbr(int n)
+int	ft_toupper(int c)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
 }

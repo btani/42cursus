@@ -12,12 +12,6 @@
 
 #include "ft_printf.h"
 
-/*typedef struct s_sc
-{
-	int	len;
-	int	widht;
-}			t_sc;*/
-
 int	ft_flags(va_list arg, const char type)
 {
 	int	count;
@@ -47,10 +41,7 @@ int	ft_printf(const char *s, ...)
 	int		i;
 	int		count;
 	va_list	arg;
-	//t_sc	sc;
 
-	//sc_len = 0;
-	//sc_widht = 0;
 	va_start (arg, s);
 	i = 0;
 	count = 0;

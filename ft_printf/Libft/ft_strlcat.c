@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/05 14:51:12 by btani             #+#    #+#             */
+/*   Updated: 2022/10/05 15:51:18 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printnbr(int n)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	size_t	i;
+	size_t	lendst;
+
+	i = 0;
+	lendst = ft_strlen(dst);
+	if (size <= lendst)
+		return (size + ft_strlen(src));
+	while (lendst < size - 1 && src[i] != '\0')
+	{
+		dst[lendst] = src[i];
+		i++;
+		lendst++;
+	}
+	dst[lendst] = '\0';
+	return (lendst + ft_strlen(&src[i]));
 }

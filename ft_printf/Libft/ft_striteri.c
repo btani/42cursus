@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/17 18:44:56 by btani             #+#    #+#             */
+/*   Updated: 2022/10/17 18:46:35 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printnbr(int n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	unsigned int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		(*f)(i, s + i);
+		i++;
+	}
 }

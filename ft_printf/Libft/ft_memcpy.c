@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/03 18:46:59 by btani             #+#    #+#             */
+/*   Updated: 2022/10/03 19:07:01 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_printnbr(int n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	size_t				a;
+	unsigned char		*d;
+	const unsigned char	*s;
+
+	d = dest;
+	s = src;
+	a = 0;
+	if (!src && !dest)
+		return (NULL);
+	while (a < n)
+	{
+		d[a] = s[a];
+		a++;
+	}
+	return (dest);
 }

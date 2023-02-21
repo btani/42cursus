@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/03 17:27:27 by btani             #+#    #+#             */
+/*   Updated: 2022/10/03 17:47:25 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_printnbr(int n)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	size_t	a;
+	char	*f;
+
+	f = s;
+	a = 0;
+	while (a < n)
+	{
+		*f = c;
+		f++;
+		a++;
+	}
+	return (s);
 }

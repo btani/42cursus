@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 14:43:53 by btani             #+#    #+#             */
-/*   Updated: 2022/10/25 14:45:42 by btani            ###   ########.fr       */
+/*   Created: 2022/10/20 13:57:32 by btani             #+#    #+#             */
+/*   Updated: 2022/10/20 14:05:27 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printnbr(int n)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	ft_putnbr_fd(n, 1);
-	return (ft_countdec(n));
+	t_list	*a;
+
+	if (!*lst)
+		return ;
+	while (*lst)
+	{
+		a = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = a;
+	}
 }
