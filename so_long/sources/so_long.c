@@ -15,8 +15,11 @@
 int	main(int ac, char **av)
 {
 	t_game	*game;
-	
+
 	game = malloc(sizeof(t_game));
 	ft_check_args(ac, av, game);
 	ft_init_map(game, av[1]);
+	ft_init_variab(game);
+	ft_check_map(game);
+	ft_init_mlx(game);
 }
