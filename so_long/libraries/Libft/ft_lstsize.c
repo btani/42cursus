@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close_game.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:36:45 by btani             #+#    #+#             */
-/*   Updated: 2023/02/22 15:36:46 by btani            ###   ########.fr       */
+/*   Created: 2022/10/20 13:36:31 by btani             #+#    #+#             */
+/*   Updated: 2022/10/20 13:43:40 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
 
-int	ft_error_msg(char *msg, t_game *game)
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-	if (game->map_alloc == true)
-		ft_free_map(game);
-	free(game);
-	ft_printf("%s\n", msg);
-	exit (EXIT_FAILURE);
-	//nb! EXIT_FAILURE = 1; EXIT SUCCESS = 0 fanno parte di stdlib.h
+	t_list	*a;
+	int		i;
+
+	i = 1;
+	if (!lst)
+		return (0);
+	a = lst;
+	while (a->next != NULL)
+	{
+		a = a->next;
+		i++;
+	}
+	return (i);
 }

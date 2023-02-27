@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close_game.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_uns_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:36:45 by btani             #+#    #+#             */
-/*   Updated: 2023/02/22 15:36:46 by btani            ###   ########.fr       */
+/*   Created: 2022/10/27 17:30:03 by btani             #+#    #+#             */
+/*   Updated: 2022/10/27 17:30:07 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
 
-int	ft_error_msg(char *msg, t_game *game)
+#include "ft_printf.h"
+
+void	ft_putnbr_uns_fd(unsigned int n, int fd)
 {
-	if (game->map_alloc == true)
-		ft_free_map(game);
-	free(game);
-	ft_printf("%s\n", msg);
-	exit (EXIT_FAILURE);
-	//nb! EXIT_FAILURE = 1; EXIT SUCCESS = 0 fanno parte di stdlib.h
+	unsigned long int	i;
+
+	i = n;
+	if (i > 9)
+		ft_putnbr_uns_fd(i / 10, fd);
+	ft_putchar_fd(i % 10 + 48, fd);
 }

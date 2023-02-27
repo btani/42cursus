@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close_game.c                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:36:45 by btani             #+#    #+#             */
-/*   Updated: 2023/02/22 15:36:46 by btani            ###   ########.fr       */
+/*   Created: 2022/10/03 18:46:59 by btani             #+#    #+#             */
+/*   Updated: 2022/10/03 19:07:01 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
+#include "libft.h"
 
-int	ft_error_msg(char *msg, t_game *game)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (game->map_alloc == true)
-		ft_free_map(game);
-	free(game);
-	ft_printf("%s\n", msg);
-	exit (EXIT_FAILURE);
-	//nb! EXIT_FAILURE = 1; EXIT SUCCESS = 0 fanno parte di stdlib.h
+	size_t				a;
+	unsigned char		*d;
+	const unsigned char	*s;
+
+	d = dest;
+	s = src;
+	a = 0;
+	if (!src && !dest)
+		return (NULL);
+	while (a < n)
+	{
+		d[a] = s[a];
+		a++;
+	}
+	return (dest);
 }

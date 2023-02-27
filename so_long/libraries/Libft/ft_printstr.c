@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close_game.c                                    :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:36:45 by btani             #+#    #+#             */
-/*   Updated: 2023/02/22 15:36:46 by btani            ###   ########.fr       */
+/*   Created: 2022/10/25 14:16:35 by btani             #+#    #+#             */
+/*   Updated: 2022/10/25 14:16:49 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
 
-int	ft_error_msg(char *msg, t_game *game)
+#include "ft_printf.h"
+
+int	ft_printstr(char *str)
 {
-	if (game->map_alloc == true)
-		ft_free_map(game);
-	free(game);
-	ft_printf("%s\n", msg);
-	exit (EXIT_FAILURE);
-	//nb! EXIT_FAILURE = 1; EXIT SUCCESS = 0 fanno parte di stdlib.h
+	int	i;
+
+	i = 0;
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i] != '\0')
+	{
+		ft_putchar_fd(str[i], 1);
+		i++;
+	}
+	return (i);
 }

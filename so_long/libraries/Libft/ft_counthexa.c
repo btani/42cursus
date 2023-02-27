@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close_game.c                                    :+:      :+:    :+:   */
+/*   ft_counthexa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:36:45 by btani             #+#    #+#             */
-/*   Updated: 2023/02/22 15:36:46 by btani            ###   ########.fr       */
+/*   Created: 2022/10/26 16:53:25 by btani             #+#    #+#             */
+/*   Updated: 2022/10/26 16:53:30 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
 
-int	ft_error_msg(char *msg, t_game *game)
-{
-	if (game->map_alloc == true)
-		ft_free_map(game);
-	free(game);
-	ft_printf("%s\n", msg);
-	exit (EXIT_FAILURE);
-	//nb! EXIT_FAILURE = 1; EXIT SUCCESS = 0 fanno parte di stdlib.h
+#include "ft_printf.h"
+
+int	ft_counthexa(unsigned long n)
+{	
+	int	i;
+
+	i = 0;
+	while (n != 0)
+	{
+		i++;
+		n = n / 16;
+	}
+	return (i);
 }

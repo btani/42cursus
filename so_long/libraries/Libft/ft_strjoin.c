@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close_game.c                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:36:45 by btani             #+#    #+#             */
-/*   Updated: 2023/02/22 15:36:46 by btani            ###   ########.fr       */
+/*   Created: 2022/10/13 17:27:28 by btani             #+#    #+#             */
+/*   Updated: 2022/10/13 18:07:38 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
 
-int	ft_error_msg(char *msg, t_game *game)
+#include "libft.h"
+
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (game->map_alloc == true)
-		ft_free_map(game);
-	free(game);
-	ft_printf("%s\n", msg);
-	exit (EXIT_FAILURE);
-	//nb! EXIT_FAILURE = 1; EXIT SUCCESS = 0 fanno parte di stdlib.h
+	char	*dest;
+	int		i;
+	int		j;
+
+	i = 0;
+	dest = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (dest == 0)
+		return (NULL);
+	while (s1[i])
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		dest[i] = s2[j];
+		j++;
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

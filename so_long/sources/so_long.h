@@ -13,34 +13,25 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../minilibix-linux/mlx.h"
-# include "./ft_printf/ft_printf.h"
-# include "./get_next_line/get_next_line.h"
+# include "../minilibx-linux/mlx.h"
+# include "../libraries/Libft/libft.h"
+# include "../libraries/Libft/ft_printf.h"
+# include "../libraries/Libft/get_next_line.h"
 # include <fcntl.h>
 # include <time.h>
 # include <stdlib.h>
+# include <unistd.h>
 
-# define WALL = "1"
-# define FLOOR = "0"
-# define COLLECITBLE = "C"
-# define EXIT = "E"
-# define PLAYER = "P"
+# define WALL '1'
+# define FLOOR '0'
+# define COLLECTIBLE 'C'
+# define EXIT 'E'
+# define PLAYER 'P'
 
-# define FRONT
-# define BACK
-# define LEFT
-# define RIGHT
-
-typedef struct s_map
-{
-	int		lines;
-	int		columns;
-	int		collect;
-	int 		exit;
-	int		players;
-	t_position	player;
-	char	**full;
-}	t_map;
+# define FRONT 1
+# define BACK 2
+# define LEFT 3
+# define RIGHT 4
 
 typedef enum e_bool
 {
@@ -54,22 +45,45 @@ typedef struct s_position
 	int	y;
 }	t_position;
 
+typedef struct s_image
+{
+	void	*xpm_ptr;
+	int		x;
+	int		y;
+}	t_image;
+
+typedef struct s_map
+{
+	int			lines;
+	int			columns;
+	int			collects;
+	int			exit;
+	int			players;
+	t_position	player;
+	char		**full;
+}	t_map;
+
+
 typedef struct s_game
 {
 	t_bool	map_alloc;
-	t_game	*game;
 	int		movs;
 	int		sprite_player;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_map		map;
+	t_image	floor;
+	t_image	wall;
+	t_image	collectible;
+	t_image	open_exit;
+	t_image	close_exit;
+	t_image	player_f;
+	t_image	player_b;
+	t_image	player_l;
+	t_image	player_r;
 }	t_game;
 
-
-
-
-
-
-void	ft_check_args(int ac, char **av, t_game game);
+void	ft_check_args(int ac, char **av, t_game *game);
 void	ft_init_map(t_game *game, char *av);
 int		ft_error_msg(char *msg, t_game *game);
 char	*ft_joinstr(char **s1, const char *s2);
@@ -77,8 +91,10 @@ void	ft_empty_line_check(char *map, t_game *game);
 void	ft_free_map(t_game *game);
 void	ft_init_variab(t_game *game);
 void	ft_check_map(t_game *game);
-void	ft_check_lines(t_game game);
+void	ft_check_lines(t_game *game);
 void	ft_check_columns(t_game *game);
 void	ft_num_of_components(t_game *game);
 void	ft_check_components(t_game *game);
-
+void	ft_sprites(t_game *game);
+void	ft_sprites(t_game *game);
+#endif

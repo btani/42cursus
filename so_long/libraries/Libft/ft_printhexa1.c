@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_close_game.c                                    :+:      :+:    :+:   */
+/*   ft_printhexa1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:36:45 by btani             #+#    #+#             */
-/*   Updated: 2023/02/22 15:36:46 by btani            ###   ########.fr       */
+/*   Created: 2022/10/26 16:54:28 by btani             #+#    #+#             */
+/*   Updated: 2022/10/26 16:54:51 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
 
-int	ft_error_msg(char *msg, t_game *game)
+#include "ft_printf.h"
+
+int	ft_printhexa1(unsigned int n, char type)
 {
-	if (game->map_alloc == true)
-		ft_free_map(game);
-	free(game);
-	ft_printf("%s\n", msg);
-	exit (EXIT_FAILURE);
-	//nb! EXIT_FAILURE = 1; EXIT SUCCESS = 0 fanno parte di stdlib.h
+	char			*s;
+	unsigned long	a;
+
+	a = n;
+	if (type == 'x')
+		s = "0123456789abcdef";
+	else if (type == 'X')
+		s = "0123456789ABCDEF";
+	else
+		return (0);
+	if (a == 0)
+		return (write (1, "0", 1));
+	if (a >= 16)
+		ft_printhexa1 (a / 16, type);
+	write (1, &s[(int)(a % 16)], 1);
+	return (ft_counthexa(a));
 }

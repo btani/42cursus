@@ -11,13 +11,18 @@
 /* ************************************************************************** */
 #include "so_long.h"
 
-void	ft_check_args(int ac, char **av, t_game game)
+void	ft_check_args(int ac, char **av, t_game *game)
 {
+	int	len_components;
+	
 	game->map_alloc = false;
 	if (ac > 2)
 		ft_error_msg("Too many arguments!", game);
 	if (ac < 2)
 		ft_error_msg("Too few arguments!", game);
+	len_components = ft_strlen(av[1]);
+	if(!ft_strnstr(&av[1][len_components - 4], ".ber", 4))
+		ft_error_msg("Error! File map extension worng", game);
 }
 
 void	ft_empty_line_check(char *map, t_game *game)
