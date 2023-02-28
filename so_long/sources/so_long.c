@@ -24,9 +24,9 @@ int	main(int ac, char **av)
 	ft_init_mlx(game);
 	ft_sprites(game);
 	ft_render_map(game);
-	mlx_hook(game->win_ptr, 02, 1L<<0, ft_handle_input, game);
-	mlx_hook(game->win_ptr, 17, 1L<<2, ft_close_game, game);
-	mlx_hook(game->win_ptr, 12, 1L<<15), ft_render_map, game);
+	mlx_hook(game->win_ptr, 02, 1L << 0, ft_input, game);
+	mlx_hook(game->win_ptr, 17, 1L << 2, ft_close_game, game);
+	mlx_hook(game->win_ptr, 12, 1L << 15, ft_render_map, game);
 	mlx_loop(game->mlx_ptr);
 	ft_free_mem(game);
 }

@@ -63,15 +63,14 @@ typedef struct s_map
 	char		**full;
 }	t_map;
 
-
 typedef struct s_game
 {
 	t_bool	map_alloc;
 	int		movs;
-	int		sprite_player;
+	int		player_sprite;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_map		map;
+	t_map	map;
 	t_image	floor;
 	t_image	wall;
 	t_image	collectible;
@@ -95,6 +94,17 @@ void	ft_check_lines(t_game *game);
 void	ft_check_columns(t_game *game);
 void	ft_num_of_components(t_game *game);
 void	ft_check_components(t_game *game);
+void	ft_init_mlx(t_game *game);
+t_image	ft_put_sprite(void *mlx, char *path, t_game *game);
 void	ft_sprites(t_game *game);
-void	ft_sprites(t_game *game);
+int		ft_render_map(t_game *game);
+void	ft_put_image_to_wind(t_game *game, t_image sprite, int y, int x);
+void	ft_which_sprite(t_game *game, int y, int x);
+void	ft_which_player(t_game *game, int y, int x);
+int		ft_input(int key, t_game *game);
+void	ft_move_player(t_game *game, int new_y, int new_x, int player_sprite);
+int		ft_close_game(t_game *game);
+int		ft_victory(t_game *game);
+void	ft_destroy_img(t_game *game);
+void	ft_free_mem(t_game *game);
 #endif

@@ -30,7 +30,7 @@ SRCS_DIR = ./sources/
 
 SRCS =	$(addprefix $(SRCS_DIR),\
 	ft_check_map.c ft_free_mem.c ft_start_game.c ft_close_game.c\
-	ft_init_map.c so_long.c)
+	ft_init_map.c so_long.c ft_input.c ft_render_map.c)
 
 #SRCS_BONUS =
 
@@ -56,7 +56,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	#make fclean -C libraries/Libft
-	@echo "$(PURPLE)Srcs pulite con successo $(NO_COLOR)"
+	@echo "$(PURPLE)Srcs rimosse con successo $(NO_COLOR)"
 		
 re: fclean all
 

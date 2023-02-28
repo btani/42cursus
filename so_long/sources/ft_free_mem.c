@@ -20,3 +20,26 @@ void	ft_free_map(t_game *game)
 		free(game->map.full[str++]);
 	free(game->map.full);
 }
+
+void	ft_destroy_img(t_game *game)
+{
+	mlx_destroy_image(game->mlx_ptr, game->floor.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->wall.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->close_exit.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->open_exit.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->collectible.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->player_f.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->player_b.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->player_l.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->player_r.xpm_ptr);
+}
+
+void	ft_free_mem(t_game *game)
+{
+	ft_destroy_img(game);
+	ft_free_map(game);
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
+	free(game);	
+}

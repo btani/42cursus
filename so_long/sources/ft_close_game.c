@@ -11,6 +11,22 @@
 /* ************************************************************************** */
 #include "so_long.h"
 
+int	ft_victory(t_game *game)
+{
+	ft_printf("Movements: %d\n", ++game->movs);
+	ft_free_mem(game);
+	//inserisci immagine "you win"
+	exit (EXIT_FAILURE);
+}
+
+int	ft_close_game(t_game *game)
+{
+	ft_printf("Movements: %d\n", game->movs);
+	ft_free_mem(game);
+	ft_printf("Closed\n");
+	exit (EXIT_FAILURE);
+}
+
 int	ft_error_msg(char *msg, t_game *game)
 {
 	if (game->map_alloc == true)

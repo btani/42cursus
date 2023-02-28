@@ -14,14 +14,14 @@
 void	ft_check_args(int ac, char **av, t_game *game)
 {
 	int	len_components;
-	
+
 	game->map_alloc = false;
 	if (ac > 2)
 		ft_error_msg("Too many arguments!", game);
 	if (ac < 2)
 		ft_error_msg("Too few arguments!", game);
 	len_components = ft_strlen(av[1]);
-	if(!ft_strnstr(&av[1][len_components - 4], ".ber", 4))
+	if (!ft_strnstr(&av[1][len_components - 4], ".ber", 4))
 		ft_error_msg("Error! File map extension worng", game);
 }
 
@@ -74,7 +74,7 @@ void	ft_init_map(t_game *game, char *av)
 	char	*tmp_line;
 	int		fd;
 
-	fd = open(av, 0_RDONLY);
+	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		ft_error_msg("Ops impossible to open the map", game);
 	tmp_map = ft_strdup("");
