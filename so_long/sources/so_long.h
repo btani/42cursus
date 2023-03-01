@@ -17,6 +17,8 @@
 # include "../libraries/Libft/libft.h"
 # include "../libraries/Libft/ft_printf.h"
 # include "../libraries/Libft/get_next_line.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <fcntl.h>
 # include <time.h>
 # include <stdlib.h>
