@@ -40,18 +40,18 @@ void	ft_sprites(t_game *game)
 	void	*mlx;
 
 	mlx = game->mlx_ptr;
-	game->floor = ft_put_sprite(mlx, "./assets/sprites/floor.xpm", game);
-	game->wall = ft_put_sprite(mlx, "./assets/sprites/wall.xpm", game);
-	game->close_exit = ft_put_sprite(mlx, "./assets/sprites/close.xpm", game);
-	game->open_exit = ft_put_sprite(mlx, "./assets/sprites/open.xpm", game);
-	game->collectible = ft_put_sprite(mlx, "./assets/sprites/collect.xpm", game);
-	game->player_f = ft_put_sprite(mlx, "./assets/sprites/p_front.xpm", game);
-	game->player_b = ft_put_sprite(mlx, "./assets/sprites/p_back.xpm", game);
-	game->player_l = ft_put_sprite(mlx, "./assets/sprites/p_left.xpm", game);
-	game->player_r = ft_put_sprite(mlx, "./assets/sprites/p_right.xpm", game);
+	game->floor = ft_put_sprite(mlx, "./assets/sprites/floor.xpm"/*, game*/);
+	game->wall = ft_put_sprite(mlx, "./assets/sprites/wall.xpm"/*, game*/);
+	game->close_exit = ft_put_sprite(mlx, "./assets/sprites/close_exit.xpm"/*, game*/);
+	game->open_exit = ft_put_sprite(mlx, "./assets/sprites/open_exit.xpm"/*, game*/);
+	game->collectible = ft_put_sprite(mlx, "./assets/sprites/collectible.xpm"/*, game*/);
+	game->player_f = ft_put_sprite(mlx, "./assets/sprites/player_f.xpm"/*, game*/);
+	game->player_b = ft_put_sprite(mlx, "./assets/sprites/player_b.xpm"/*, game*/);
+	game->player_l = ft_put_sprite(mlx, "./assets/sprites/player_l.xpm"/*, game*/);
+	game->player_r = ft_put_sprite(mlx, "./assets/sprites/player_r.xpm"/*, game*/);
 }
 
-t_image	ft_put_sprite(void *mlx, char *path, t_game *game)
+t_image	ft_put_sprite(void *mlx, char *path/*, t_game *game*/)
 {
 	t_image	sprite;
 	

@@ -95,7 +95,7 @@ void	ft_check_columns(t_game *game);
 void	ft_num_of_components(t_game *game);
 void	ft_check_components(t_game *game);
 void	ft_init_mlx(t_game *game);
-t_image	ft_put_sprite(void *mlx, char *path, t_game *game);
+t_image	ft_put_sprite(void *mlx, char *path/*, t_game *game*/);
 void	ft_sprites(t_game *game);
 int		ft_render_map(t_game *game);
 void	ft_put_image_to_wind(t_game *game, t_image sprite, int y, int x);
