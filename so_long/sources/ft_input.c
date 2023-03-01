@@ -14,18 +14,18 @@
 
 void	ft_move_player(t_game *game, int new_y, int new_x, int player_sprite)
 {
-	int	x_prec;
-	int	y_prec;
+	int	x_last;
+	int	y_last;
 
 	game->player_sprite = player_sprite;
-	x_prec = game->map.player.x;
-	y_prec = game->map.player.y;
+	x_last = game->map.player.x;
+	y_last = game->map.player.y;
 	if (game->map.full[new_y][new_x] == EXIT && game->map.collects == 0)
 		ft_victory(game);
 	else if ((game->map.full[new_y][new_x] == FLOOR)
 		|| (game->map.full[new_y][new_x] == COLLECTIBLE))
 	{
-		game->map.full[x_prec][y_prec] = FLOOR;
+		game->map.full[x_last][y_last] = FLOOR;
 		if (game->map.full[new_y][new_x] == COLLECTIBLE)
 			game->map.collects--;
 		game->map.player.x = new_x;

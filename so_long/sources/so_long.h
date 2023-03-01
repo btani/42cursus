@@ -107,4 +107,5 @@ int		ft_close_game(t_game *game);
 int		ft_victory(t_game *game);
 void	ft_destroy_img(t_game *game);
 void	ft_free_mem(t_game *game);
+//void	ft_movements(t_game *game);
 #endif

@@ -20,7 +20,7 @@ void	ft_which_player(t_game *game, int y, int x)
 		ft_put_image_to_wind(game, game->player_b, y, x);
 	if (game->player_sprite == LEFT)
 		ft_put_image_to_wind(game, game->player_l, y, x);
-	if (game->player_sprite == BACK)
+	if (game->player_sprite == RIGHT)
 		ft_put_image_to_wind(game, game->player_r, y, x);
 }
 
@@ -38,9 +38,9 @@ void	ft_which_sprite(t_game *game, int y, int x)
 	else if (component == EXIT)
 	{
 		if (game->map.collects == 0)
-			ft_put_image_to_wind(game, game->close_exit, y, x);
-		else
 			ft_put_image_to_wind(game, game->open_exit, y, x);
+		else
+			ft_put_image_to_wind(game, game->close_exit, y, x);
 	}
 	else if (component == PLAYER)
 		ft_which_player(game, y, x);
@@ -53,9 +53,16 @@ void	ft_put_image_to_wind(t_game *game, t_image sprite, int row, int col)
 
 /*void	ft_movements(t_game *game)
 {
-	
-}*/
+	char	*movements;
+	char	*phrase;
 
+	movements = ft_itoa(game->movs);
+	phrase = ft_strjoin("Movements : ", movements);
+	mlx_string_put(game->mlx_ptr, game->win_ptr, 40, 20, 0xFF0000, phrase);
+	free(movements);
+	free(phrase);
+}
+*/
 int	ft_render_map(t_game *game)
 {
 	int	x;
@@ -65,7 +72,7 @@ int	ft_render_map(t_game *game)
 	while (y < game->map.lines)
 	{
 		x = 0;
-		while (x < game->map.columns)
+		while (x < game->map.columns + 1)
 		{
 			ft_which_sprite(game, y, x);
 			x++;

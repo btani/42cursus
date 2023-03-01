@@ -42,7 +42,7 @@ void	ft_empty_line_check(char *map, t_game *game)
 		free(map);
 		ft_error_msg("Invalid map, empty line at the end", game);
 	}
-	while (map[i + 1] == '\n')
+	while (map[i + 1])
 	{
 		if (map[i] == '\n' && map[i + 1] == '\n')
 		{

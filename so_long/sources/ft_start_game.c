@@ -48,7 +48,7 @@ void	ft_sprites(t_game *game)
 	game->player_f = ft_put_sprite(mlx, "./assets/sprites/player_f.xpm"/*, game*/);
 	game->player_b = ft_put_sprite(mlx, "./assets/sprites/player_b.xpm"/*, game*/);
 	game->player_l = ft_put_sprite(mlx, "./assets/sprites/player_l.xpm"/*, game*/);
-	game->player_r = ft_put_sprite(mlx, "./assets/sprites/player_r.xpm"/*, game*/);
+	game->player_r =  ft_put_sprite(mlx, "./assets/sprites/player_r.xpm"/*, game*/);
 }
 
 t_image	ft_put_sprite(void *mlx, char *path/*, t_game *game*/)
@@ -56,7 +56,7 @@ t_image	ft_put_sprite(void *mlx, char *path/*, t_game *game*/)
 	t_image	sprite;
 	
 	sprite.xpm_ptr = mlx_xpm_file_to_image(mlx, path, &sprite.x, &sprite.y);
-	if (sprite.xpm_ptr == NULL)
-		ft_error_msg("Error!There isn't any image", game);
+	/*if (sprite.xpm_ptr == NULL)
+		ft_error_msg("Error!There isn't any image", game);*/
 	return (sprite);
 }
