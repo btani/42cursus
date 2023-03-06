@@ -14,16 +14,16 @@
 void	ft_check_lines(t_game *game)
 {
 	int	ln;
-	
+
 	ln = 0;
 	while (ln < game->map.lines)
 	{
 		if ((int) ft_strlen(game->map.full[ln]) != game->map.columns)
 			ft_error_msg("Error!The map isn't rectangular", game);
 		else if (game->map.full[ln][0] != WALL)
-			ft_error_msg("Error!first Wall missing", game);	
+			ft_error_msg("Error! Wall missing in the first line", game);
 		else if (game->map.full[ln][game->map.columns - 1] != WALL)
-			ft_error_msg("Error!last Wall missing", game);
+			ft_error_msg("Error! Wall missing in the last line", game);
 		ln++;
 	}
 }
@@ -36,9 +36,9 @@ void	ft_check_columns(t_game *game)
 	while (col < game->map.columns)
 	{
 		if (game->map.full[0][col] != WALL)
-			ft_error_msg("Error!Wall missing", game);
+			ft_error_msg("Error!Wall missing in the first column", game);
 		else if (game->map.full[game->map.lines - 1][col] != WALL)
-			ft_error_msg("Error!Wall missing", game);
+			ft_error_msg("Error!Wall missing in the last column", game);
 		col++;
 	}
 }
@@ -55,7 +55,7 @@ void	ft_num_of_components(t_game *game)
 		while (x < game->map.columns)
 		{
 			if (!ft_strchr("01CEP", game->map.full[y][x]))
-				ft_error_msg("Error in the parameters. Invalid map!", game);
+				ft_error_msg("Error in the components. Invalid map!", game);
 			else if (game->map.full[y][x] == PLAYER)
 			{
 				game->map.players++;

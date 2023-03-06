@@ -25,7 +25,7 @@ void	ft_move_player(t_game *game, int new_y, int new_x, int player_sprite)
 	else if ((game->map.full[new_y][new_x] == FLOOR)
 		|| (game->map.full[new_y][new_x] == COLLECTIBLE))
 	{
-		game->map.full[x_last][y_last] = FLOOR;
+		game->map.full[y_last][x_last] = FLOOR;
 		if (game->map.full[new_y][new_x] == COLLECTIBLE)
 			game->map.collects--;
 		game->map.player.x = new_x;
@@ -42,9 +42,9 @@ int	ft_input(int key, t_game *game)
 		ft_move_player(game, game->map.player.y - 1, game->map.player.x, BACK);
 	if (key == 97 || key == 65361)
 		ft_move_player(game, game->map.player.y, game->map.player.x - 1, LEFT);
-	if (key == 115 || key == 65363)
+	if (key == 115 || key == 65364)
 		ft_move_player(game, game->map.player.y + 1, game->map.player.x, FRONT);
-	if (key == 100 || key == 65364)
+	if (key == 100 || key == 65363)
 		ft_move_player(game, game->map.player.y, game->map.player.x + 1, RIGHT);
 	if (key == 113 || key == 65307)
 		ft_close_game(game);

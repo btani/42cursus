@@ -54,6 +54,12 @@ typedef struct s_image
 	int		y;
 }	t_image;
 
+/*typedef struct s_vector
+{
+	int 		x;
+	int		y;
+}	t_vector;*/
+
 typedef struct s_map
 {
 	int			lines;
@@ -97,7 +103,7 @@ void	ft_check_columns(t_game *game);
 void	ft_num_of_components(t_game *game);
 void	ft_check_components(t_game *game);
 void	ft_init_mlx(t_game *game);
-t_image	ft_put_sprite(void *mlx, char *path/*, t_game *game*/);
+t_image	ft_put_sprite(void *mlx, char *path, t_game *game);
 void	ft_sprites(t_game *game);
 int		ft_render_map(t_game *game);
 void	ft_put_image_to_wind(t_game *game, t_image sprite, int y, int x);
@@ -109,5 +115,5 @@ int		ft_close_game(t_game *game);
 int		ft_victory(t_game *game);
 void	ft_destroy_img(t_game *game);
 void	ft_free_mem(t_game *game);
-//void	ft_movements(t_game *game);
+void	ft_movements(t_game *game);
 #endif

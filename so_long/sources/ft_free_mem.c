@@ -41,5 +41,5 @@ void	ft_free_mem(t_game *game)
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
-	free(game);	
+	free(game);
 }

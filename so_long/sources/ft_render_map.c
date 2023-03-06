@@ -49,20 +49,20 @@ void	ft_which_sprite(t_game *game, int y, int x)
 void	ft_put_image_to_wind(t_game *game, t_image sprite, int row, int col)
 {
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite.xpm_ptr, col * sprite.x, row * sprite.y);
+}
+
+void	ft_movements(t_game *game)
+{
+	char	*movement;
+	char	*msg;
+
+	movement = ft_itoa(game->movs);
+	msg = ft_strjoin("Movements:", movement);
+	mlx_string_put(game->mlx_ptr, game->win_ptr, 10, 20, 0xFFFFFF, msg);
+	//free movement;
+	//free msg;
 }	
 
-/*void	ft_movements(t_game *game)
-{
-	char	*movements;
-	char	*phrase;
-
-	movements = ft_itoa(game->movs);
-	phrase = ft_strjoin("Movements : ", movements);
-	mlx_string_put(game->mlx_ptr, game->win_ptr, 40, 20, 0xFF0000, phrase);
-	free(movements);
-	free(phrase);
-}
-*/
 int	ft_render_map(t_game *game)
 {
 	int	x;
@@ -79,6 +79,6 @@ int	ft_render_map(t_game *game)
 		}
 		y++;
 	}
-	//ft_movements(game);
+	ft_movements(game);
 	return (0);
 }
