@@ -29,10 +29,10 @@ void	ft_which_sprite(t_game *game, int y, int x)
 	char	component;
 
 	component = game->map.full[y][x];
-	if (component == FLOOR)
-		ft_put_image_to_wind(game, game->floor, y, x);
-	else if (component == WALL)
+	if (component == WALL)
 		ft_put_image_to_wind(game, game->wall, y, x);
+	else if (component == FLOOR)
+		ft_put_image_to_wind(game, game->floor, y, x);
 	else if (component == COLLECTIBLE)
 		ft_put_image_to_wind(game, game->collectible, y, x);
 	else if (component == EXIT)
@@ -59,8 +59,8 @@ void	ft_movements(t_game *game)
 	movement = ft_itoa(game->movs);
 	msg = ft_strjoin("Movements:", movement);
 	mlx_string_put(game->mlx_ptr, game->win_ptr, 10, 20, 0xFFFFFF, msg);
-	//free movement;
-	//free msg;
+	free(movement);
+	free(msg);
 }	
 
 int	ft_render_map(t_game *game)

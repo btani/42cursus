@@ -17,7 +17,7 @@ void	ft_init_variab(t_game *game)
 	game->map.exit = 0;
 	game->map.players = 0;
 	game->movs = 0;
-	game->map.columns = ft_strlen(game->map.full[0]);
+	game->map.columns = ft_strlen(game->map.full[0]) - 1;
 	game->player_sprite = RIGHT;
 }
 
@@ -26,11 +26,10 @@ void	ft_init_mlx(t_game *game)
 	game->mlx_ptr = mlx_init();
 	if (game->mlx_ptr == NULL)
 		ft_error_msg("Error, no mlx ptr!", game);
-	game->win_ptr = mlx_new_window(game->mlx_ptr, 32 * game->map.columns,
+	game->win_ptr = mlx_new_window(game->mlx_ptr, 32 * (game->map.columns + 1),
 			32 * game->map.lines, "SO_LONG");
 	if (game->win_ptr == NULL)
 	{
-		free(game->mlx_ptr);
 		ft_error_msg("Error!Ops, couldn't open the window", game);
 	}
 }

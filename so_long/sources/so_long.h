@@ -24,6 +24,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define GREEN = \033[0;32m
+# define RED = \033[0;31m
+# define YELLOW = \033[0;33m
+# define PURPLE = \033[0;35m
+# define NO_COLOR = \033[0m
+
 # define WALL '1'
 # define FLOOR '0'
 # define COLLECTIBLE 'C'
@@ -53,12 +59,6 @@ typedef struct s_image
 	int		x;
 	int		y;
 }	t_image;
-
-/*typedef struct s_vector
-{
-	int 		x;
-	int		y;
-}	t_vector;*/
 
 typedef struct s_map
 {
@@ -116,4 +116,6 @@ int		ft_victory(t_game *game);
 void	ft_destroy_img(t_game *game);
 void	ft_free_mem(t_game *game);
 void	ft_movements(t_game *game);
+//int		ft_flood_fill(char **tab, t_map size, t_position begin);
+//void	ft_find(char **temp, t_map size, t_position pos);
 #endif
