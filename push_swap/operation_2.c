@@ -12,24 +12,22 @@
 
 #include "push_swap"
 
-void	ft_sb(t_stack **b, int i)
-{
-	if (!*b || *b->next)
-		return;
-	temp = *b;
-	*b = *b->next;
-	temp->next = *a->next;
-	*a->next = temp;
-}
-
-void	ft_pb(t_stack **a, t_stack **b, int i)
+void	ft_ss(t_stack *stka, t_stack *stkb)
 {
 	t_stack *temp;
 	
-	if (!*a)
-		return;
-	temp = *b;
-	*b = *a;
-	*a = *a->next;
-	*a->next = temp;
+	temp = stka->next;
+	stka->next = temp->next;
+	temp->next = stka;
+	stka = temp;
+	temp = stkb->next;
+	stkb->next = temp->next;
+	temp->next = stkb;
+	stkb = temp;
+	printf("ss\n");
 }
+
+void	ft_rr
+
+void	ft_rrr
+

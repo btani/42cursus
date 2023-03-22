@@ -78,6 +78,7 @@ void	ft_init_map(t_game *game, char *av)
 	int		fd;
 	//char **temp;
 
+
 	//temp = NULL;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
@@ -102,7 +103,7 @@ void	ft_init_map(t_game *game, char *av)
 		ft_error_msg("\033[0;31mError! Memory allocation failed\033[0m", game);
 	temp = ft_split(tmp_map, '\n');
 		ft_memcpy(temp, game->map.full, sizeof(game->map.full));
-	if (ft_flood_fill(temp, game->map, game->map.player) == 0)
+	if (ft_flood_fill(temp, game->xpm_ptr, game->map.player))
 	{
 		free(temp);
 		ft_error_msg("\033[0;31mError! the E/C not reachable!\033[0m", game);

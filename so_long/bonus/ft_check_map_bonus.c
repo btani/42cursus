@@ -19,11 +19,11 @@ void	ft_check_lines(t_game *game)
 	ln = 0;
 	while (ln < game->map.lines)
 	{
-		if ((int) ft_strlen(game->map.full[ln]) != game->map.columns)
+		if ((int) ft_strlen(game->map.full[ln]) != game->map.columns + 1)
 			ft_error_msg("Error!The map isn't rectangular", game);
 		else if (game->map.full[ln][0] != WALL)
 			ft_error_msg("Error!Wall in the first line missing", game);
-		else if (game->map.full[ln][game->map.columns - 1] != WALL)
+		else if (game->map.full[ln][game->map.columns] != WALL)
 			ft_error_msg("Error!Wall in the last line missing", game);
 		ln++;
 	}

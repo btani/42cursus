@@ -61,8 +61,8 @@ void	ft_movements(t_game *game)
 	movement = ft_itoa(game->movs);
 	msg = ft_strjoin("Moves:", movement);
 	mlx_string_put(game->mlx_ptr, game->win_ptr, 10, 20, 0xFFFFFF, msg);
-	//free (movement);
-	//free (msg);
+	free (movement);
+	free (msg);
 }	
 
 int	ft_render_map(t_game *game)

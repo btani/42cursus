@@ -31,7 +31,7 @@ SRCS_DIR_BONUS = ./bonus/
 
 SRCS =	$(addprefix $(SRCS_DIR),\
 	ft_check_map.c ft_free_mem.c ft_start_game.c ft_close_game.c\
-	ft_init_map.c so_long.c ft_input.c ft_render_map.c)
+	ft_init_map.c so_long.c ft_input.c ft_render_map.c flood_fill.c)
 
 SRCS_BONUS = $(addprefix $(SRCS_DIR_BONUS),\
 	ft_check_map_bonus.c ft_free_mem_bonus.c ft_start_game_bonus.c ft_close_game_bonus.c\

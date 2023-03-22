@@ -79,6 +79,7 @@ typedef struct s_game
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_map	map;
+	t_image	xpm_ptr;
 	t_image	floor;
 	t_image	wall;
 	t_image	collectible;
@@ -116,6 +117,6 @@ int		ft_victory(t_game *game);
 void	ft_destroy_img(t_game *game);
 void	ft_free_mem(t_game *game);
 void	ft_movements(t_game *game);
-//int		ft_flood_fill(char **tab, t_map size, t_position begin);
-//void	ft_find(char **temp, t_map size, t_position pos);
+void	ft_find(char **temp, t_image size, t_position pos);
+int	ft_flood_fill(char **tab, t_image size, t_position begin);
 #endif

@@ -90,8 +90,8 @@ char	**ft_split(char const *s, char c)
 	split[j] = NULL;
 	return (split);
 }
-
-/*typedef struct t_vect
+/*
+typedef struct t_vect
 {
 	int	i;
 	int	j;

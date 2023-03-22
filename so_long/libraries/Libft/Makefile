@@ -30,7 +30,7 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c\
 	ft_countdec.c ft_printunsnbr.c ft_countdec_uns.c ft_printhexa1.c\
 	ft_printvoidptr.c ft_counthexa.c ft_printchar.c ft_printnbr.c\
 	ft_printhexa.c ft_printf.c ft_printstr.c ft_putnbr_uns_fd.c\
-	get_next_line.c
+	get_next_line.c get_next_line_utils.c
 
 SRC_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c\

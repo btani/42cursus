@@ -15,7 +15,9 @@
 
 typedef struct s_stack
 {
-}	t_stack;
+	int	n;
+	struct s_stack *next;
+}		t_stack;
 
 
 void	ft_sa(t_stack **a, int i);

@@ -22,7 +22,7 @@ void	ft_check_lines(t_game *game)
 			ft_error_msg("\033[0;31mError!The map isn't rectangular\033[0m", game);
 		else if (game->map.full[ln][0] != WALL)
 			ft_error_msg("\033[0;31mError! Wall missing in the first line\033[0m", game);
-		else if (game->map.full[ln][game->map.columns - 1] != WALL)
+		else if (game->map.full[ln][game->map.columns] != WALL)
 			ft_error_msg("\033[0;31mError! Wall missing in the last line\033[0m", game);
 		ln++;
 	}
