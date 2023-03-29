@@ -10,41 +10,63 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap"
+#include "push_swap.h"
 
-void	*ft_lst_last(t_stack *lst)
+//ritorna l'ultimo elemento della lista
+t_stack	*ft_lst_last(t_stack *lst)
 {
-	if (lst = NULL)
-		return (lst);
+	if (!lst)
+		return (NULL);
 	while (lst->next)
 		lst = lst->next;
-	return(lst);
+	return (lst);
 }
 
-void	*ft_newlst(int i)
+//ritorna la grandezza della lista
+int	ft_lst_size(t_stack *lst)
 {
-	t_stack *temp;
-	
-	temp = malloc(sizeof(*temp));
-	if (temp == 0)
-		return (NULL);
-	temp->i = i;
-	temp->next = NULL;
-	return (temp);
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
 
+//crea nuovo nodo della grandezza data
+t_stack	*ft_newlst(int data)
+{
+	t_stack *new;
+	
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		ft_printf("Error there's no list");
+	new->n = data;
+	new->next = NULL;
+	return (new);
+}
+/*
 void	ft_add_front(t_stack **lst, t_stack *new)
 {
-	new->next = *lst;
-	*lst = new;
-}
+	if (!lst)
+		return ;
+	if (!*lst)
+		*lst = new;
+	else
+		new->next = *lst;
+		*lst = new;
+}*/
 
+//aggiunge un nodo in fondo alla lista 
 void	ft_add_back(t_stack **lst, t_stack *new)
 {
-	if (!*lst)
-	{
-		*lst = new;
+	if (!lst)
 		return ;
-	}
-	ft_lst_last(*lst)->next = new;
+	if (!*lst)
+		*lst = new;
+	else
+		(ft_lst_last(*lst))->next = new;
 }

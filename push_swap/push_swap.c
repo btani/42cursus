@@ -12,16 +12,31 @@
 
 #include "push_swap.h"
 
+int	ft_check_sort(t_stack *a)
+{
+	int	i;
+
+	i = a->n;
+	while (a)
+	{
+		if (i > a->n)
+			return (0);
+		i = a->n;
+		a->n = a->next;
+	}
+	return (1);
+}
+
 void	ft_sort(t_stack *a, t_stack *b)
 {
 	int i;
 	t_stack *temp;
 	
-	while (a != NULL)
+	while (a)
 	{
 		temp = a;
 		i = a->n;
-		while (temp->next != NULL)
+		while (temp->next)
 		{
 			if (temp->n < i)
 				i = temp->n;
@@ -34,29 +49,77 @@ void	ft_sort(t_stack *a, t_stack *b)
 	ft_pb(&b, &a);
 }
 
-void	ft_list(t_stack **lst, char **av)
+t_stack	*ft_process2(char **av)
+{
+	t_stack *a;
+	char **temp;
+	int	i;
+	int	j;
+
+	i = 0;
+	a = NULL;
+	temp = ft_split(av[1], " ");
+	while (temp[i])
+	{
+		j = ft_atoi(temp[i]);
+		ft_add_back(&a, ft_newlst(j));
+		i++;
+	}
+	ft_free(temp);
+	free(temp);
+	return (a);
+}
+
+t_stack	*ft_process(int ac, char **av)
+{
+	t_stack *a;
+	int	i;
+	int	j;
+
+	i = 1;
+	a = NULL;
+	if (ac < 2)
+		ft_printf("Too few arguments!");
+	if (ac == 2)
+		a = ft_process2(av);
+	else
+	{
+		while (i < ac)
+		{
+			j = ft_atoi(av[i]);
+			ft_add_back(&a, ft_newlst(j));
+			i++;
+		}
+	}
+	return (a);
+}
+
+/*void	ft_create_list(t_stack **lst, char **av)
 {
 	int	i;
 	t_stack *temp;
 	
-	i = 2;
+	i = 0;
 	while (av[i])
 	{
 		temp = ft_newlst(ft_atoi(av[i]));
 		ft_add_back(lst, temp);
 		i++;
 	}
-}
+}*/
 
 int main(int ac, char **av)
 {
 	t_stack *a;
-	int	n;
 	
-	n = ft_atoi(av[1]);
-	a = ft_newlst(n);
-	if (ac > 2)
-		ft_list(&a, av)
-	ft_sort(a, NULL);
+	a = ft_process(ac, av);
+	if (!a|| !(ft_check_duplicates(a)))
+	{
+		ft_free(&a);
+		ft_printf("Error the list dosn't exist!");
+	}
+	if (!ft_check_sort(a))
+		//ft_sort(&a);
+	ft_free(a);
 	return (0);
 }

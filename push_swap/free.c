@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 18:26:26 by btani             #+#    #+#             */
-/*   Updated: 2022/10/03 18:26:33 by btani            ###   ########.fr       */
+/*   Created: 2023/03/27 20:22:46 by btani             #+#    #+#             */
+/*   Updated: 2023/03/27 20:22:49 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+#include "push_swap.h"
+
+void    ft_free(t_stack **stack)
 {
-	size_t	a;
-	char	*f;
+    t_stack *temp;
 
-	f = s;
-	a = 0;
-	while (a < n)
-	{
-		*f = '\0';
-		f++;
-		a++;
-	}
+    if (!stack)
+        return;
+    while (*stack)
+    {
+        temp = (*stack)->next;
+        (*stack)->n = 0;
+        free(*stack);
+        *stack = temp;
+    }
 }

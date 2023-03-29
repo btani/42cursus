@@ -55,7 +55,7 @@ void	ft_ra_rb(t_stack **stk, int i)
 	if (i == 1)
 		printf("ra\n");
 	if (i == 2)
-		printf("rb\n")
+		printf("rb\n");
 }
 
 void	ft_rra_rrb(t_stack *stk, int i)
