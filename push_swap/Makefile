@@ -16,28 +16,46 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+PURPLE = \033[0;35m
+NO_COLOR = \033[0m
+
+SRCS_DIR = ./src/
+
+SRCS = $(addprefix $(SRCS_DIR),\
+		check.c check2.c free.c utils_lst.c\
+		utils_lst2.c operation_a.c operation_b.c operation_double.c\
+		sort.c push_swap.c)
+
 OBJS = $(SRCS:.c=.o)
 
-SRCS = operation_2.c operation.c push_swap.c utils_lst.c
+%.o : %.c
+	@$(CC) $(CFLAGS) -c $< -o $@ -I Libft -I src
+	printf "Compilo... %-8.8s\r" $@
 
 LIBFT = ./Libft/libft.a
 
-all: $(NAME)
+all: lib $(NAME)
+
+lib: 
+	make bonus -C ./Libft
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-	@echo "Sources compilate"
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)
+	@echo "$(GREEN)Sources compilate! $(NO_COLOR)"
 	
 clean:
-	rm - rf $(OBJS)
-	make clean -C ./Libft
-	@echo "Objs rimossi"
+	rm -rf $(OBJS)
+#	make clean -C Libft
+	@echo "$(PURPLE)Objs rimossi! $(NO_COLOR)"
 	
 fclean: clean
-	rm - rf $(NAME)
-	make fclean -C ./Libft
-	@echo "Srcs rimosse"
+	rm -rf $(NAME)
+#	make fclean -C Libft
+	@echo "$(PURPLE)Srcs rimosse! $(NO_COLOR)"
 	
 re: fclean all
 
 .PHONY: all clean fclean re
+.SILENT:
