@@ -19,7 +19,7 @@ int ft_find_min(t_stack *a)
     i = a->n;
     while (a)
     {
-        while (a->n < i)
+        while (i > a->n)
             i = a->n;
         a = a->next;    
     }   
@@ -36,7 +36,7 @@ int ft_find_max(t_stack *a)
     i = a->n;
     while (a)
     {
-        while (a->n > i)
+        while (i < a->n)
             i = a->n;
         a = a->next;
     }

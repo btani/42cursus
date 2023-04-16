@@ -38,12 +38,15 @@ void ft_sort_three(t_stack **a)
      }
 }
 
-void ft_sort(t_stack **a, int ac) //t_stack **b
+void ft_sort(t_stack **a)
 {
-     if (ac == 3)
+     if (ft_lst_size(*a) == 2)
           ft_sa(a, 0);
-     if (ac == 4)
+     if (ft_lst_size(*a) == 3)
+     {
+          printf("ciao");
           ft_sort_three(a);
+     }
      /*if (ac == 6 || ac == 5)
      {
           ft_process_five(a, b, 0);

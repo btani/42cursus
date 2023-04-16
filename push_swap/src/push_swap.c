@@ -82,7 +82,7 @@ int main(int ac, char **av)
 	}
 	if (!ft_check_sort(a))
 	{
-		ft_sort(&a, ac);
+		ft_sort(&a);
 		ft_print_testa(a);
 	}
 	ft_free(&a);

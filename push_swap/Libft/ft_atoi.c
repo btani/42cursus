@@ -14,23 +14,25 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	res;
+	long long int	i;
 	int	sign;
 
 	i = 0;
-	res = 0;
 	sign = 1;
-	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
-		i++;
-	if (nptr[i] == '-')
+	while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
+		nptr++;
+	if (*nptr == '-')
 		sign = -1;
-	if (nptr[i] == '-' || nptr[i] == '+')
-		i++;
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	if (*nptr == '-' || *nptr == '+')
+		nptr++;
+	while (*nptr)
 	{
-		res = (res * 10) + (nptr[i] - '0');
-		i++;
+		if(!ft_isdigit(*nptr))
+			write(1, "Error not a digit\n", 18);
+		i = (i * 10) + (*nptr - '0');
+		nptr++;
 	}
-	return (res * sign);
+	if ((sign * i) > 2147483647 || (sign * i) < -2147483648)
+		write(1, "Error int min/max\n", 18);
+	return (sign * i);
 }
