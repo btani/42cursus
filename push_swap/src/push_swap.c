@@ -54,7 +54,7 @@ t_stack	*ft_process(int ac, char **av)
 	i = 1;
 	a = NULL;
 	if (ac < 2)
-		ft_printf("\033[0;31mError!Too few arguments!\033[0m");
+		write(2,"Error\n", 7);
 	if (ac == 2)
 		a = ft_process2(av);
 	else
@@ -74,12 +74,13 @@ int main(int ac, char **av)
 {
 	t_stack *a;
 
+	if (ft_check_double(ac, av))
+		return (1);
+	if (ft_check_if_num(av))
+		return (1);
 	a = ft_process(ac, av);
-	if (!a || ft_check_duplicates(a))
-	{
+	if (!a)
 		ft_free(&a);
-		ft_printf("\033[0;31mError the list dosn't exist!\033[0m");
-	}
 	if (!ft_check_sort(a))
 	{
 		ft_sort(&a);

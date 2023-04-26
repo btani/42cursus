@@ -47,11 +47,10 @@ void	ft_free(t_stack **stack);
 void    ft_free_str(char **str);
 int		ft_check_duplicates(t_stack *a);
 void	ft_check_if_alpha(char **av);
-int		ft_check_alphanumeric(char **av);
+int		ft_check_if_num(char **av);
 int		ft_sign(int c);
 int		ft_space(int c);
 int		ft_check_error(char **av, int i, int j);
-void	ft_error_print(void);
 void	ft_sa(t_stack **a, int i);
 void	ft_pa(t_stack **a, t_stack **b, int i);
 void	ft_ra(t_stack **a, int i);
@@ -64,5 +63,6 @@ void	ft_sort(t_stack **a);
 void	ft_sort_three(t_stack **a);
 int		ft_check_sort(t_stack *a);
 int		ft_index(t_stack *a, int n);
+int		ft_check_double(int ac, char **av);
 
 #endif

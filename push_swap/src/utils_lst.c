@@ -46,7 +46,7 @@ t_stack	*ft_newlst(int data)
 	
 	new = malloc(sizeof(t_stack));
 	if (!new)
-		ft_printf("\033[0;31mError there's no list\033[0m");
+		write(2,"Error\n", 7);
 	new->n = data;
 	new->next = NULL;
 	return (new);

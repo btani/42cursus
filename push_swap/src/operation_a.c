@@ -31,7 +31,7 @@ void	ft_pa(t_stack **a, t_stack **b, int i)
 {
 	t_stack *temp;
 	
-	if (!b)
+	if (!*b)
 		return ;
 	temp = *a;
 	*a = *b;
@@ -49,8 +49,9 @@ void	ft_ra(t_stack **a, int i)
 	if (!*a || !(*a)->next)
 		return ;
 	temp = *a;
-	*a = (*a)->next;
-	ft_lst_last((*a)->next = temp);
+	*a = ft_lst_last(*a);
+	(*a)->next = temp;
+	*a = temp->next;
 	temp->next = NULL;
 	if (i == 0)
 		write(1, "ra\n", 3);

@@ -24,8 +24,6 @@ int ft_find_min(t_stack *a)
         a = a->next;    
     }   
     return (i);
-    ft_printf("il min e': %d\n", i);
-
 }
 
 //cerca il n piu grande nello stack
@@ -41,7 +39,6 @@ int ft_find_max(t_stack *a)
         a = a->next;
     }
     return (i);
-    ft_printf("il max e': %d\n", i);
 }
 
 //controlla in che indirizzo e' un elemento della lista
@@ -57,5 +54,4 @@ int    ft_index(t_stack *a, int n)
     }
     a->index = 0;
     return (j);
-    ft_printf("%d\n", j);
 }

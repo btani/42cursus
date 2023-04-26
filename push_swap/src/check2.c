@@ -36,7 +36,7 @@ int ft_check_error(char **av, int i, int j)
             if (ft_sign(av[i][j]))
             {
                 j++;
-                if (ft_isdigit(av[i][j]))
+                if (!ft_isdigit(av[i][j]))
                     return (false);
             }
             else if (ft_isdigit(av[i][j]))
@@ -52,10 +52,4 @@ int ft_check_error(char **av, int i, int j)
         i++;
     }
     return (true);
-}
-
-void ft_error_print(void)
-{
-    write(2, "Error\n", 6);
-    exit(1);
 }

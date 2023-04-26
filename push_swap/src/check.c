@@ -12,22 +12,27 @@
 #include "push_swap.h"
 
 //controlla se ci sono doppi nella lista
-int    ft_check_duplicates(t_stack *a)
+int ft_check_double(int ac, char **av)
 {
-    t_stack *temp;
-    
-    while (a)
-    {
-        temp = a->next;
-        while (temp)
-        {
-            if (a->n == temp->n)
-                return (1);
-            temp = temp->next;
-        }
-        a = a->next;
-    }
-    return (0);
+	int i;
+	int j;
+
+	i = 1;
+	while (i < ac - 1)
+	{
+		j = i + 1;
+		while (j < ac)
+		{
+			if (ft_atoi(av[i]) == ft_atoi(av[j]))
+			{
+				write(2, "Error\n", 7);
+				return (1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 //controllo ascii
@@ -53,10 +58,10 @@ void ft_check_if_alpha(char **av)
     }
 }
 
-int ft_check_alphanumeric(char **av)
+int ft_check_if_num(char **av)
 {
     ft_check_if_alpha(av);
-    if (!ft_check_error(av, 1, 0))
+    if (ft_check_error(av, 1, 0))
         return (false);
     return (true);
 }
