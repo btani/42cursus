@@ -61,6 +61,7 @@ void	ft_rb(t_stack **b, int i);
 void    ft_rrb(t_stack **b, int i);
 void	ft_sort(t_stack **a);
 void	ft_sort_three(t_stack **a);
+void	ft_sort_four(t_stack **a);
 int		ft_check_sort(t_stack *a);
 int		ft_index(t_stack *a, int n);
 int		ft_check_double(int ac, char **av);

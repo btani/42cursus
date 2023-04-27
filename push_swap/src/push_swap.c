@@ -76,8 +76,6 @@ int main(int ac, char **av)
 
 	if (ft_check_double(ac, av))
 		return (1);
-	if (ft_check_if_num(av))
-		return (1);
 	a = ft_process(ac, av);
 	if (!a)
 		ft_free(&a);

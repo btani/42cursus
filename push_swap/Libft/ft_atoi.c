@@ -21,6 +21,11 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	res = 0;
 	sign = 1;
+	if (!ft_isdigit(nptr[i]))
+	{
+        write(2, "Error\n", 7);
+		exit (1);
+    }
 	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
 		i++;
 	if (nptr[i] == '-')
@@ -29,11 +34,6 @@ int	ft_atoi(const char *nptr)
 		i++;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		if(!ft_isdigit(nptr[i]))
-		{
-			write(2, "Error\n", 7);
-			exit (1);
-		}
 		res = (res * 10) + (nptr[i] - '0');
 		i++;
 	}

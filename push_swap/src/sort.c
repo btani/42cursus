@@ -11,14 +11,27 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-/*void ft_sort_four(t_stack **a)
+void ft_sort_four(t_stack **a)
 {
-     if (ft_find_min(*a) == (*a)->n)
+     printf("ciao");
+     //int i = 0;
+     //int size = 0;
+     t_stack **b;
+
+     b = malloc(sizeof(t_stack));
+     while (ft_lst_size(*a) == 4)
      {
-          while ((*a)->next)
-               ft_sort_three(a);
+          ft_pb(a, b, 0);
+          ft_sort_three(a);
+          printf("ciao1");
+          while (*b)
+          {
+               ft_pa(a, b, 0);
+               if ((*b)->n > (*a)->n)
+                    ft_add_back(a, *b);
+          }
      }
-}*/
+}
 
 void ft_sort_three(t_stack **a)
 {
@@ -54,7 +67,7 @@ void ft_sort(t_stack **a)
           ft_sa(a, 0);
      if (ft_lst_size(*a) == 3)
           ft_sort_three(a);
-     /*if (ft_lst_size(*a) == 4)
-          ft_sort_four(a);*/
+     if (ft_lst_size(*a) == 4)
+          ft_sort_four(a);
 }
      
