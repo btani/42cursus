@@ -73,7 +73,7 @@ t_stack	*ft_process(int ac, char **av)
 int main(int ac, char **av)
 {
 	t_stack *a;
-
+	
 	if (ft_check_double(ac, av))
 		return (1);
 	a = ft_process(ac, av);

@@ -21,11 +21,6 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	res = 0;
 	sign = 1;
-	if (!ft_isdigit(nptr[i]))
-	{
-        write(2, "Error\n", 7);
-		exit (1);
-    }
 	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
 		i++;
 	if (nptr[i] == '-')
@@ -42,5 +37,10 @@ int	ft_atoi(const char *nptr)
 			write(2, "Error\n", 7);
 			exit (1);
 	}
+	if (ft_isalpha(nptr[i]))
+	{
+        write(2, "Error\n", 7);
+		exit (1);
+    }
 	return (res * sign);
 }

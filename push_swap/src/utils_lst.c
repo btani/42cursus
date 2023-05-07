@@ -20,8 +20,6 @@ t_stack	*ft_lst_last(t_stack *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
-	ft_printf("%s\n", lst);
-
 }
 
 //ritorna la grandezza della lista
@@ -36,7 +34,6 @@ int	ft_lst_size(t_stack *lst)
 		i++;
 	}
 	return (i);
-	ft_printf("%d\n", i);
 }
 
 //crea nuovo nodo della grandezza data

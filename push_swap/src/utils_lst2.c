@@ -10,6 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+//cerca elemento nella lista
+int ft_find_num(t_stack *a, int num)
+{
+    while (a)
+    {
+        if (a->n == num)
+           return (num);
+        a = a->next;
+    }
+    return (0);
+}
 
 //cerca il n piu piccolo nello stack
 int ft_find_min(t_stack *a)

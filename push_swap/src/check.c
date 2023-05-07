@@ -69,15 +69,14 @@ int ft_check_if_num(char **av)
 //controlla se la lista e' sortata
 int    ft_check_sort(t_stack *a)
 {
-    int i;
-
-    i = a->n;
-    while (a)
+    if (!a || !a->next)
+        return (1);
+    while (a->next)
     {
-        if (i > a->n)
-            return(0);
-        i = a->n;
+    if (a->n < a->next->n)
         a = a->next;
+    else
+        return (0);
     }
-    return(1);
+    return (1);
 }
