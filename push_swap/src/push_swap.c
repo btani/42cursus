@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int ft_print_testa(t_stack *a)
+int ft_print_stack(t_stack *a)
 {
 	while (a)
 	{
@@ -70,6 +70,21 @@ t_stack	*ft_process(int ac, char **av)
 	return (a);
 }
 
+//controlla se la lista e' sortata
+int    ft_check_sort(t_stack *a)
+{
+    if (!a || !a->next)
+        return (1);
+    while (a->next)
+    {
+    if (a->n < a->next->n)
+        a = a->next;
+    else
+        return (0);
+    }
+    return (1);
+}
+ 
 int main(int ac, char **av)
 {
 	t_stack *a;
@@ -82,7 +97,7 @@ int main(int ac, char **av)
 	if (!ft_check_sort(a))
 	{
 		ft_sort(&a);
-		ft_print_testa(a);
+		ft_print_stack(a);
 	}
 	ft_free(&a);
 	return (0);

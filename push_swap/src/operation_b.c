@@ -12,24 +12,24 @@
 #include "push_swap.h"
 
 //swap dei primi due elementi di b
-void    ft_sb(t_stack **b, int i)
+void	ft_sb(t_stack **b, int i)
 {
-    t_stack *temp;
+    t_stack	*temp;
 
     if (!*b || !((*b)->next))
-        return ;
+    	return ;
     temp = *b;
     *b = (*b)->next;
-    temp->next =(*b)->next;
+    temp->next = (*b)->next;
     (*b)->next = temp;
     if (i == 0)
         write(1, "sb\n", 3);
 }
 
 //shifta in alto di uno tutti gli elementi di b
-void    ft_rb(t_stack **b, int i)
+void	ft_rb(t_stack **b, int i)
 {
-    t_stack *temp;
+    t_stack	*temp;
 
     if (!*b || !((*b)->next))
         return ;
@@ -43,9 +43,9 @@ void    ft_rb(t_stack **b, int i)
 }
 
 //pusha il primo elemento della lista a nella lista b
-void ft_pb(t_stack **a, t_stack **b, int i)
+void	ft_pb(t_stack **a, t_stack **b, int i)
 {
-    t_stack *temp;
+    t_stack	*temp;
 
     if (!*a)
         return ;
@@ -54,13 +54,13 @@ void ft_pb(t_stack **a, t_stack **b, int i)
     *a = (*a)->next;
     (*b)->next = temp;
     if (i == 0)
-        write(1, "pb\n", 3);
+    	write(1, "pb\n", 3);
 }
 
 //shifta in basso di uno tutti gli elementi di b
-void    ft_rrb(t_stack **b, int i)
+void	ft_rrb(t_stack **b, int i)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	i = 0;
 	if (!*b || !((*b)->next))
@@ -78,6 +78,7 @@ void    ft_rrb(t_stack **b, int i)
 		i--;
 	}
 	temp->next = NULL;
+    i = 0;
 	if (i == 0)
 		write(1, "rrb\n", 4);
 }

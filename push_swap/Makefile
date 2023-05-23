@@ -24,9 +24,11 @@ NO_COLOR = \033[0m
 SRCS_DIR = ./src/
 
 SRCS = $(addprefix $(SRCS_DIR),\
-		check.c check2.c free.c utils_lst.c\
-		utils_lst2.c operation_a.c operation_b.c operation_double.c\
-		sort.c push_swap.c)
+		check.c check_algo.c utils_lst.c utils_lst2.c\
+		sort.c operation_a.c operation_b.c operation_double.c\
+		push_swap.c mechanicalturk.c free.c op_ab_algo.c\
+		op_ba_algo.c sort_algo.c find_algo.c moves_ab_algo.c\
+		moves_ba_algo.c combo_algo.c)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -58,4 +60,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-.SILENT:

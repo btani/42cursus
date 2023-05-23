@@ -39,11 +39,11 @@ int	ft_lst_size(t_stack *lst)
 //crea nuovo nodo della grandezza data
 t_stack	*ft_newlst(int data)
 {
-	t_stack *new;
-	
+	t_stack	*new;
+
 	new = malloc(sizeof(t_stack));
 	if (!new)
-		write(2,"Error\n", 7);
+		write (2, "Error\n", 7);
 	new->n = data;
 	new->next = NULL;
 	return (new);

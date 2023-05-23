@@ -66,17 +66,45 @@ int ft_check_if_num(char **av)
     return (true);
 }
 
-//controlla se la lista e' sortata
-int    ft_check_sort(t_stack *a)
+int	ft_sign(int c)
 {
-    if (!a || !a->next)
-        return (1);
-    while (a->next)
-    {
-    if (a->n < a->next->n)
-        a = a->next;
-    else
-        return (0);
-    }
-    return (1);
+	if (c == '+' && c == '-')
+        	return (1);
+    	return (0);
+}
+
+int	ft_space(int c)
+{
+       if (c == 32)
+	       return (1);
+       return (0);
+}
+
+//controlla se gli argomenti sono validi
+int	ft_check_error(char **av, int i, int j)
+{
+    while (av[i])
+	{
+        j = 0;
+        while (av[i][j] != '\0')
+       	{
+        	if (ft_sign(av[i][j]))
+           	{
+            	j++;
+              	if (ft_isdigit(av[i][j]))
+               		return (false);
+           	}
+            else if (ft_isdigit(av[i][j]))
+            {
+              	j++;
+               	if (av[i][j] == '\0')
+               		break ;
+               	if (!ft_sign(av[i][j]) && !ft_space(av[i][j]))
+               		return (false);
+            }
+            j++;
+        }
+       	i++;
+	}
+    return (true);
 }

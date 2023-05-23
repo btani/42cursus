@@ -32,41 +32,118 @@ typedef struct s_stack
 	struct s_stack *next;
 }		t_stack;
 
-int		main(int ac, char **av);
-int		ft_print_testa(t_stack *a);
-t_stack	*ft_process(int ac, char **av);
-t_stack	*ft_process2(char **av);
-t_stack	*ft_lst_last(t_stack *lst);
-int		ft_lst_size(t_stack *lst);
-t_stack	*ft_newlst(int data);
-void	ft_add_back(t_stack **lst, t_stack *new);
-void	ft_add_front(t_stack **lst, t_stack *new);
-int		ft_find_min(t_stack *a);
-int		ft_find_max(t_stack *a);
-void	ft_free(t_stack **stack);
-void    ft_free_str(char **str);
-int		ft_check_duplicates(t_stack *a);
+typedef struct s_vals
+{
+	int	size_a;
+	int	biggest_a;
+	int	smallest_a;
+	int	size_b;
+	int	biggest_b;
+	int	smallest_b;
+}		t_vals;
+
+/*CHECK*/
+int		ft_check_double(int ac, char **av);
 void	ft_check_if_alpha(char **av);
 int		ft_check_if_num(char **av);
 int		ft_sign(int c);
 int		ft_space(int c);
 int		ft_check_error(char **av, int i, int j);
+//int		ft_check_duplicates(t_stack *a);
+
+/*CHECKALGO*/
+void	ft_newbiggest_ab(t_stack **a, t_stack **b, t_vals *vals);
+void	ft_newsmallest_ab(t_stack **a, t_stack **b, t_vals *vals);
+void	ft_newbiggest_ba(t_stack **b, t_stack **a, t_vals *vals);
+void	ft_newsmallest_ba(t_stack **b, t_stack **a, t_vals *vals);
+
+/*COMBO_ALGO*/
+
+/*FIND_ALGO*/
+int	ft_finddst_ab(int nbr, t_stack *b, t_vals *vals);
+int ft_finddst_ba(int nbr, t_stack *a, t_vals *vals);
+
+/*FREE*/
+void	ft_free(t_stack **stack);
+void    ft_free_str(char **str);
+
+/*MECHANICALTURK*/
+void	ft_mechanicalturk(t_stack **a, t_stack **b);
+void	ft_push_first2(t_stack **a, t_stack **b, t_vals *vals);
+
+/*MOVES_ALGO*/
+int ft_apply_rarb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int ft_apply_rr_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int ft_apply_rrarb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int ft_apply_rrbra_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int ft_apply_rarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int ft_apply_rr_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int ft_apply_rrarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int	ft_apply_rrbra_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+
+/*OPERATION_A*/
 void	ft_sa(t_stack **a, int i);
 void	ft_pa(t_stack **a, t_stack **b, int i);
 void	ft_ra(t_stack **a, int i);
 void	ft_rra(t_stack **a, int i);
+
+/*OPERATION_B*/
 void	ft_sb(t_stack **b, int i);
 void	ft_pb(t_stack **a, t_stack **b, int i);
 void	ft_rb(t_stack **b, int i);
 void    ft_rrb(t_stack **b, int i);
+
+/*OPERATION_DOUBLE*/
+void    ft_rr(t_stack **a, t_stack **b, int i);
+void    ft_rrr2(t_stack **b, int i);
+void    ft_rrr(t_stack **a, t_stack **b, int i);
+
+/*OPERATION_AB*/
+int ft_rarb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int ft_rrarrb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int ft_rrarb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int ft_rrbra_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+
+/*OPERATION_BA*/
+int ft_rbra_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int ft_rrbrra_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int ft_rrarb_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int ft_rrbra_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+
+/*PUSH_SWAP*/
+int		main(int ac, char **av);
+int		ft_print_stack(t_stack *a);
+t_stack	*ft_process(int ac, char **av);
+t_stack	*ft_process2(char **av);
+int		ft_check_sort(t_stack *a);
+
+/*SORT*/
 void	ft_sort(t_stack **a);
 void	ft_sort_three(t_stack **a);
 void	ft_sort_big(t_stack **a, t_stack **b);
 //void	ft_sort_four(t_stack **a, t_stack **b);
-int		ft_check_sort(t_stack *a);
-int		ft_index(t_stack *a, int n);
-int		ft_check_double(int ac, char **av);
+
+/*SORT_ALGO*/
+int	ft_combo_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int	ft_combo_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+void	ft_apply_combo_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+void	ft_apply_combo_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+
+/*UTILS_LST*/
+t_stack	*ft_lst_last(t_stack *lst);
+int		ft_lst_size(t_stack *lst);
+t_stack	*ft_newlst(int data);
+void	ft_add_back(t_stack **lst, t_stack *new);
+void	ft_add_front(t_stack **lst, t_stack *new);
+
+/*UTILS_LST2*/
+int		ft_find_min(t_stack *a);
+int		ft_find_max(t_stack *a);
 int		ft_find_num(t_stack *a, int num);
-void	ft_push(t_stack **a, t_stack **b);
+int		ft_index(t_stack *a, int n);
+
+//void	ft_push(t_stack **a, t_stack **b);
+//void	ft_radix_sort(t_stack **a, t_stack **b);
+//int		ft_bits_max(t_stack **lst);
 
 #endif
