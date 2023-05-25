@@ -24,17 +24,17 @@ NO_COLOR = \033[0m
 SRCS_DIR = ./src/
 
 SRCS = $(addprefix $(SRCS_DIR),\
-		check.c check_algo.c utils_lst.c utils_lst2.c\
-		sort.c operation_a.c operation_b.c operation_double.c\
-		push_swap.c mechanicalturk.c free.c op_ab_algo.c\
-		op_ba_algo.c sort_algo.c find_algo.c moves_ab_algo.c\
-		moves_ba_algo.c combo_algo.c)
+		check_algo.c check.c find_algo.c free.c\
+		mechanicalturk.c moves_ab_algo.c moves_ba_algo.c\
+		op_ab_algo.c op_ba_algo.c operation_a.c operation_b.c\
+		operation_double.c push_swap.c sort_algo.c sort.c\
+		utils_lst.c utils_lst2.c)
 
 OBJS = $(SRCS:.c=.o)
 
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@ -I Libft -I src
-	printf "Compilo... %-8.8s\r" $@
+	@printf "Compilo... %-9.0s\r" $@
 
 LIBFT = ./Libft/libft.a
 

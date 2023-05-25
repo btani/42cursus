@@ -43,7 +43,7 @@ int ft_rrarrb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals)
         // esegue ft_newbiggest() cosi a diventa 3 2 1 e b rimane 2 1
         moves = ft_lst_size(b) - ft_finddst_ab(nbr, b, vals);
     }
-    if (moves < (ft_lst_size(a) - ft_index(a, nbr)) && ft_index (a, nbr))
+    if (moves < (ft_lst_size(a) - ft_index(a, nbr)) && ft_index(a, nbr))
         moves = ft_lst_size(a) - ft_index(a, nbr);
     return (moves);
 }

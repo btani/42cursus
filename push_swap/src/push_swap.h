@@ -73,11 +73,11 @@ void	ft_push_first2(t_stack **a, t_stack **b, t_vals *vals);
 
 /*MOVES_ALGO*/
 int ft_apply_rarb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
-int ft_apply_rr_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int ft_apply_rrarrb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 int ft_apply_rrarb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 int ft_apply_rrbra_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 int ft_apply_rarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
-int ft_apply_rr_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int ft_apply_rrarrb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 int ft_apply_rrarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 int	ft_apply_rrbra_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 
@@ -128,6 +128,7 @@ int	ft_combo_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
 int	ft_combo_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
 void	ft_apply_combo_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 void	ft_apply_combo_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+void	ft_sort_togheter(t_stack **a, t_stack **b, t_vals *vals);
 
 /*UTILS_LST*/
 t_stack	*ft_lst_last(t_stack *lst);

@@ -46,7 +46,7 @@ int ft_finddst_ba(int nbr, t_stack *a, t_vals *vals)
     int dest;
 
     dest = 1;
-    if(nbr > a->n && nbr < ft_lst_last(a)->n)
+    if (nbr < a->n && nbr > ft_lst_last(a)->n)
         dest = 0;
     else if (nbr < vals->smallest_a || nbr > vals->biggest_a)
         dest = ft_index(a, vals->biggest_a);

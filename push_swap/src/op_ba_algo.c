@@ -70,6 +70,6 @@ int ft_rrbra_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals)
 	moves = 0;
 	if (ft_finddst_ba(nbr, a, vals))
 		moves = ft_lst_size(b) - ft_finddst_ba(nbr, a, vals);
-	moves = ft_index(a, nbr) + moves;
+	moves = ft_index(b, nbr) + moves;
     return (moves);
 }

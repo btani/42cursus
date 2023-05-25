@@ -24,10 +24,11 @@ int ft_apply_rarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
     while (ft_finddst_ba(nbr, *a, vals) > 0)
         ft_ra(a, 0);
     ft_pa(a, b, 0);
+    //ft_updatevals
     return(-1);
 }
 
-int ft_apply_rr_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
+int ft_apply_rrarrb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
 {
     if (ft_finddst_ba(nbr, *a, vals) < 0)
         return (0);
@@ -38,25 +39,28 @@ int ft_apply_rr_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
     while (ft_finddst_ba(nbr, *a, vals) > 0)
         ft_rra(a, 0);
     ft_pa(a, b, 0);
+    //ft_updatevals
     return (-1);
 }
 
 int ft_apply_rrarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
 {
     while ((*b)->n != nbr)
-        ft_rra(b, 0);
+        ft_rb(b, 0);
     while (ft_finddst_ba(nbr, *a, vals) > 0)
-        ft_ra(a, 0);
+        ft_rra(a, 0);
     ft_pa(a, b , 0);
+    //ft_updatevals
     return (-1);
 }
 
 int ft_apply_rrbra_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
 {
-    while ((*a)->n != nbr)
-        ft_rra(a, 0);
-    while (ft_finddst(nbr, *a, vals) > 0)
-        ft_rb(b, 0);
+    while ((*b)->n != nbr)
+        ft_rrb(b, 0);
+    while (ft_finddst_ba(nbr, *a, vals) > 0)
+        ft_ra(a, 0);
     ft_pa(a, b, 0);
+    //ft_updatevals
     return (-1);
 }

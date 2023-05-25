@@ -60,7 +60,7 @@ int ft_combo_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals)
 	return (bestcombo);
 }
 
-/*Funzione che sceglie la combo piu conveniente basandosi sulla 
+/*Funzioni che determinano la combo piu conveniente basandosi sulla 
 comparazione fra mosse migliori e risultati delle varie operazioni;
 fatto quato applica l'operazione indicata con ft_apply* per modificare 
 gli stack in modo corretto*/
@@ -71,16 +71,22 @@ void ft_apply_combo_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals)
 
 	tmp = *a;
 	bestcombo = ft_combo_ab(nbr, *a, *b, vals);
-	if (tmp)
+	while (tmp)
 	{
-		if (bestcombo = ft_rarb_ab(tmp->n, a, b, vals))
-			bestcombo = ft_rarb_ab(tmp->n, a, b, vals);
-		else if (bestcombo = ft_rrarrb_ab(tmp->n, a, b, vals))
-			bestcombo = ft_rrarrb_ab(tmp->n, a, b, vals);
-		else if (bestcombo = ft_rrbra_ab(tmp->n, a, b, vals))
-			bestcombo = ft_rrbra_ab(tmp->n, a, b, vals);
-		else if (bestcombo = ft_rrarb_ab(tmp->n, a, b, vals))
-			bestcombo = ft_rrarb_ab(tmp->n, a, b, vals);
+		if (bestcombo == ft_rarb_ab(tmp->n, *a, *b, vals))
+			ft_apply_rarb_ab(tmp->n, a, b, vals);
+		else if (bestcombo == ft_rrarrb_ab(tmp->n, *a, *b, vals))
+			ft_apply_rrarrb_ab(tmp->n, a, b, vals);
+		else if (bestcombo == ft_rrarb_ab(tmp->n, *a, *b, vals))
+			ft_apply_rrarb_ab(tmp->n, a, b, vals);
+		else if (bestcombo == ft_rrbra_ab(tmp->n, *a, *b, vals))
+			ft_apply_rrbra_ab(tmp->n, a, b, vals);
+		else
+		{
+			tmp = tmp->next;
+			continue ; // per evitare che nel caso in cui non trova nessuna delle condizioni che lo soddisfa scorre la lista e poi continua il controllo 
+		}
+		break ;
 	}
 }
 
@@ -89,18 +95,23 @@ void ft_apply_combo_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
 	t_stack	*tmp;
 	int		bestcombo;
 
-	tmp = *a;
+	tmp = *b;
 	bestcombo = ft_combo_ba(nbr, *a, *b, vals);
-	if (tmp)
+	while (tmp)
 	{
-		if (bestcombo = ft_rbra_ba(tmp->n, *a, *b, vals))
-			bestcombo = ft_rbra_ba(tmp->n, a, b, vals);
-		else if (bestcombo = ft_rrbrra_ba(tmp->n, *a, *b, vals))
-			bestcombo = ft_rrbrra_ba(tmp->n, a, b, vals);
-		else if (bestcombo = ft_rrbra_ba(tmp->n, *a, *b, vals))
-			bestcombo = ft_rrbra_ba(tmp->n, a, b, vals);
-		else if (bestcombo = ft_rrarb_ba(tmp->n, *a, *b, vals))
-			bestcombo = ft_rrarb_ba(tmp->n, a, b, vals);
-		//ft_updatevals
+		if (bestcombo == ft_rbra_ba(tmp->n, *a, *b, vals))
+			ft_apply_rarb_ba(tmp->n, a, b, vals);
+		else if (bestcombo == ft_rrbrra_ba(tmp->n, *a, *b, vals))
+			ft_apply_rrarrb_ba(tmp->n, a, b, vals);
+		else if (bestcombo == ft_rrarb_ba(tmp->n, *a, *b, vals))
+			ft_apply_rrarb_ba(tmp->n, a, b, vals);
+		else if (bestcombo == ft_rrbra_ba(tmp->n, *a, *b, vals))
+			ft_apply_rrbra_ba(tmp->n, a, b, vals);
+		else
+		{
+			tmp = tmp->next;
+			continue ;
+		}
+		break ;
 	}
 }
