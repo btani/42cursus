@@ -16,7 +16,7 @@ void	ft_newbiggest_ab(t_stack **a, t_stack **b, t_vals *vals)
 {
 	if ((*a)->n < vals->biggest_b)
 		return ;
-	while (vals->biggest_b != (*b)->n)
+	while ((*b)->n != vals->biggest_b)
 		ft_rb(b, 0);
 	ft_pb(a, b, 0);
 	vals->biggest_b = (*b)->n;
@@ -61,13 +61,8 @@ void	ft_newsmallest_ba(t_stack **b, t_stack **a, t_vals *vals)
 		if ((*b)->n > vals->smallest_a)
 			return ;
 		while (vals->smallest_a != (*a)->n)
-		{
 			ft_ra(a, 0);
-			//ft_stackprint(*a);
-		}
 		ft_pa(b, a, 0);
-		//ft_stackprint(*a);
-		//ft_stackprint(*b);
 		vals->smallest_a = (*a)->n;
 		vals->size_b--;
 		vals->size_a++;

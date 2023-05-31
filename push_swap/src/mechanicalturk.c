@@ -15,8 +15,8 @@ void	ft_push_first2(t_stack **a, t_stack **b, t_vals *vals)
 {
 	ft_pb(a, b, 0);
 	ft_pb(a, b, 0);
-	vals->size_b = ft_lst_size(*b);
 	vals->size_a = ft_lst_size(*a);
+	vals->size_b = ft_lst_size(*b);
 	if ((*b)->n > (*b)->next->n)
 	{
 		vals->biggest_b = (*b)->n;
@@ -28,29 +28,45 @@ void	ft_push_first2(t_stack **a, t_stack **b, t_vals *vals)
 		vals->smallest_b = (*b)->n;
 	}
 }
-//finire
+
 void	ft_sort_togheter(t_stack **a, t_stack **b, t_vals *vals)
 {
-	printf("ciao1");
 	while (vals->size_a > 3 && !ft_check_sort(*a))
-	{
-		printf("ciao3");
 		ft_apply_combo_ab((*a)->n, a, b, vals);
-	}
 	if (!ft_check_sort(*a))
 		ft_sort_three(a);
 	vals->smallest_a = ft_find_min(*a);
 	vals->biggest_a = ft_find_max(*a);
-	while(vals->size_b > 0)
+	while (vals->size_b > 0)
 		ft_apply_combo_ba((*b)->n, a, b, vals);
+}
+
+void	ft_update_vals(t_stack *a, t_stack *b, t_vals *vals, char c)
+{
+	if (c == 'a')
+	{
+		vals->size_a--;
+		vals->size_b++;
+	}
+	else if (c == 'b')
+	{
+		vals->size_b--;
+		vals->size_a++;
+	}
+	vals->biggest_a = ft_find_max(a);
+	vals->smallest_a = ft_find_min(a);
+	vals->biggest_b = ft_find_max(b);
+	vals->smallest_b = ft_find_min(b);
+	if (c == '0')
+		return ;
 }
 
 //algoritmo
 void	ft_mechanicalturk(t_stack **a, t_stack **b)
 {
-	t_vals vals;
+	t_vals	vals;
 
-    ft_push_first2(a, b, &vals);
+	ft_push_first2(a, b, &vals);
 	ft_sort_togheter(a, b, &vals);
 	vals.smallest_a = ft_find_min(*a);
 	vals.biggest_a = ft_find_max(*a);

@@ -20,16 +20,11 @@
 # include <stdlib.h>
 # include "../Libft/libft.h"
 
-# define GREEN = \033[0;32m
-# define YELLOW = \033[0;33m
-# define PURPLE = \033[0;35m
-# define NO_COLOR = \033[0m
-
 typedef struct s_stack
 {
-	long	n;
-	long	*index;
-	struct s_stack *next;
+	long			n;
+	long			*index;
+	struct s_stack	*next;
 }		t_stack;
 
 typedef struct s_vals
@@ -57,29 +52,29 @@ void	ft_newsmallest_ab(t_stack **a, t_stack **b, t_vals *vals);
 void	ft_newbiggest_ba(t_stack **b, t_stack **a, t_vals *vals);
 void	ft_newsmallest_ba(t_stack **b, t_stack **a, t_vals *vals);
 
-/*COMBO_ALGO*/
-
 /*FIND_ALGO*/
-int	ft_finddst_ab(int nbr, t_stack *b, t_vals *vals);
-int ft_finddst_ba(int nbr, t_stack *a, t_vals *vals);
+int		ft_finddst_ab(int nbr, t_stack *b, t_vals *vals);
+int		ft_finddst_ba(int nbr, t_stack *a, t_vals *vals);
 
 /*FREE*/
 void	ft_free(t_stack **stack);
-void    ft_free_str(char **str);
+void	ft_free_str(char **str);
 
 /*MECHANICALTURK*/
 void	ft_mechanicalturk(t_stack **a, t_stack **b);
 void	ft_push_first2(t_stack **a, t_stack **b, t_vals *vals);
+void	ft_update_vals(t_stack *a, t_stack *b, t_vals *vals, char c);
+void	ft_sort_togheter(t_stack **a, t_stack **b, t_vals *vals);
 
 /*MOVES_ALGO*/
-int ft_apply_rarb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
-int ft_apply_rrarrb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
-int ft_apply_rrarb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
-int ft_apply_rrbra_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
-int ft_apply_rarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
-int ft_apply_rrarrb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
-int ft_apply_rrarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
-int	ft_apply_rrbra_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int		ft_apply_rarb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int		ft_apply_rrarrb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int		ft_apply_rrarb_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int		ft_apply_rrbra_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int		ft_apply_rarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int		ft_apply_rrarrb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int		ft_apply_rrarb_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
+int		ft_apply_rrbra_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 
 /*OPERATION_A*/
 void	ft_sa(t_stack **a, int i);
@@ -91,41 +86,43 @@ void	ft_rra(t_stack **a, int i);
 void	ft_sb(t_stack **b, int i);
 void	ft_pb(t_stack **a, t_stack **b, int i);
 void	ft_rb(t_stack **b, int i);
-void    ft_rrb(t_stack **b, int i);
+void	ft_rrb(t_stack **b, int i);
 
 /*OPERATION_DOUBLE*/
-void    ft_rr(t_stack **a, t_stack **b, int i);
-void    ft_rrr2(t_stack **b, int i);
-void    ft_rrr(t_stack **a, t_stack **b, int i);
+void	ft_rr(t_stack **a, t_stack **b, int i);
+//void	ft_rrr2(t_stack **b, int i);
+void	ft_rrr(t_stack **a, t_stack **b, int i);
 
 /*OPERATION_AB*/
-int ft_rarb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
-int ft_rrarrb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
-int ft_rrarb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
-int ft_rrbra_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_rarb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_rrarrb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_rrarb_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_rrbra_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
 
 /*OPERATION_BA*/
-int ft_rbra_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
-int ft_rrbrra_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
-int ft_rrarb_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
-int ft_rrbra_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_rarb_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_rrarrb_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_rrarb_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_rrbra_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
 
 /*PUSH_SWAP*/
 int		main(int ac, char **av);
-int		ft_print_stack(t_stack *a);
+void	ft_print_stack(t_stack *a);
 t_stack	*ft_process(int ac, char **av);
 t_stack	*ft_process2(char **av);
 int		ft_check_sort(t_stack *a);
+int		ft_atoi_ps(const char *nptr, t_stack **a, char **tmp);
+void	ft_atoi_err(void);
 
 /*SORT*/
 void	ft_sort(t_stack **a);
 void	ft_sort_three(t_stack **a);
-void	ft_sort_big(t_stack **a, t_stack **b);
-//void	ft_sort_four(t_stack **a, t_stack **b);
+void	ft_sort_four(t_stack **a, t_stack **b);
+void	ft_sort_five(t_stack **a, t_stack **b);
 
 /*SORT_ALGO*/
-int	ft_combo_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
-int	ft_combo_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_combo_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals);
+int		ft_combo_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals);
 void	ft_apply_combo_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 void	ft_apply_combo_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals);
 void	ft_sort_togheter(t_stack **a, t_stack **b, t_vals *vals);
@@ -140,11 +137,6 @@ void	ft_add_front(t_stack **lst, t_stack *new);
 /*UTILS_LST2*/
 int		ft_find_min(t_stack *a);
 int		ft_find_max(t_stack *a);
-int		ft_find_num(t_stack *a, int num);
 int		ft_index(t_stack *a, int n);
-
-//void	ft_push(t_stack **a, t_stack **b);
-//void	ft_radix_sort(t_stack **a, t_stack **b);
-//int		ft_bits_max(t_stack **lst);
 
 #endif

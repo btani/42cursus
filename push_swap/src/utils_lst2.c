@@ -10,59 +10,75 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-//cerca elemento nella lista
-int ft_find_num(t_stack *a, int num)
+//controlla se ci sono doppi nella lista
+int	ft_check_double(int ac, char **av)
 {
-    while (a)
-    {
-        if (a->n == num)
-           return (num);
-        a = a->next;
-    }
-    return (0);
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < ac - 1)
+	{
+		j = i + 1;
+		while (j < ac)
+		{
+			if (ft_atoi(av[i]) == ft_atoi(av[j]))
+			{
+				write(2, "Error\n", 7);
+				return (1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 //cerca il n piu piccolo nello stack
-int ft_find_min(t_stack *a)
+int	ft_find_min(t_stack *a)
 {
-    int i;
+	int	i;
 
-    i = a->n;
-    while (a)
-    {
-        while (i > a->n)
-            i = a->n;
-        a = a->next;    
-    }   
-    return (i);
+	if (!a)
+		return (0);
+	i = a->n;
+	while (a)
+	{
+		while (i > a->n)
+			i = a->n;
+		a = a->next;
+	}
+	return (i);
 }
 
 //cerca il n piu grande nello stack
-int ft_find_max(t_stack *a)
+int	ft_find_max(t_stack *a)
 {
-    int i;
+	int	i;
 
-    i = a->n;
-    while (a)
-    {
-        while (i < a->n)
-            i = a->n;
-        a = a->next;
-    }
-    return (i);
+	if (!a)
+		return (0);
+	i = a->n;
+	while (a)
+	{
+		while (i < a->n)
+			i = a->n;
+		a = a->next;
+	}
+	return (i);
 }
 
 //controlla in che indirizzo e' un elemento della lista
-int    ft_index(t_stack *a, int n)
+int	ft_index(t_stack *a, int n)
 {
-    int j;
-    
-    j = 0;
-    while (a->n != n)
-    {
-        j++;
-        a = a->next;
-    }
-    a->index = 0;
-    return (j);
+	int	j;
+
+	j = 0;
+	while (a->n != n)
+	{
+		j++;
+		a = a->next;
+	}
+	a->index = 0;
+	return (j);
 }

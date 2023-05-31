@@ -45,13 +45,14 @@ void	ft_pa(t_stack **a, t_stack **b, int i)
 void	ft_ra(t_stack **a, int i)
 {
 	t_stack	*temp;
+	t_stack	*last;
 
-	if (!*a || !(*a)->next)
+	if (!*a)
 		return ;
 	temp = *a;
-	*a = ft_lst_last(*a);
-	(*a)->next = temp;
-	*a = temp->next;
+	*a = (*a)->next;
+	last = ft_lst_last(*a);
+	(last)->next = temp;
 	temp->next = NULL;
 	if (i == 0)
 		write(1, "ra\n", 3);

@@ -70,7 +70,7 @@ char	**ft_split(char const *s, char c)
 	int		a;
 
 	split = (char **)malloc(sizeof(char *) * (countwords(s, c) + 1));
-	if (!split)
+	if (!split || !s)
 		return (NULL);
 	i = 0;
 	j = 0;

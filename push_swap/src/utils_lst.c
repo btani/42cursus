@@ -43,20 +43,10 @@ t_stack	*ft_newlst(int data)
 
 	new = malloc(sizeof(t_stack));
 	if (!new)
-		write (2, "Error\n", 7);
+		return (NULL);
 	new->n = data;
 	new->next = NULL;
 	return (new);
-}
-
-void	ft_add_front(t_stack **lst, t_stack *new)
-{
-	if (!lst)
-		return ;
-	if (!*lst)
-		*lst = new;
-	new->next = *lst;
-	*lst = new;
 }
 
 //aggiunge un nodo in fondo alla lista 

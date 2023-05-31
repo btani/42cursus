@@ -16,10 +16,10 @@
 calcola il numero minimo di operazioni necessarie per portare ogni
 elemento dallo stack a allo stack b usando differenti tipi di rotazione;
 ritorna il numero minimo assoluto di operazioni per ogni elento nell stack*/
-int ft_combo_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals)
+int	ft_combo_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals)
 {
-	t_stack *tmp;
-	int     bestcombo;
+	t_stack	*tmp;
+	int		bestcombo;
 
 	tmp = a;
 	bestcombo = ft_rrarrb_ab(nbr, a, b, vals);
@@ -38,23 +38,23 @@ int ft_combo_ab(int nbr, t_stack *a, t_stack *b, t_vals *vals)
 	return (bestcombo);
 }
 
-int ft_combo_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals)
+int	ft_combo_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals)
 {
-	t_stack *tmp;
-	int     bestcombo;
+	t_stack	*tmp;
+	int		bestcombo;
 
 	tmp = b;
-	bestcombo = ft_rrbrra_ba(nbr, a, b, vals);
+	bestcombo = ft_rrarrb_ba(nbr, a, b, vals);
 	while (tmp)
 	{
-		if (bestcombo > ft_rbra_ba(tmp->n, a, b, vals))
-			bestcombo = ft_rbra_ba(tmp->n, a, b, vals);
-		if (bestcombo > ft_rrbrra_ba(tmp->n, a, b, vals))
-			bestcombo = ft_rrbrra_ba(tmp->n, a, b, vals);
-		if (bestcombo > ft_rrbra_ba(tmp->n, a, b, vals))
-			bestcombo = ft_rrbra_ba(tmp->n, a, b, vals);
-		if (bestcombo > ft_rrarb_ba(tmp->n, a, b, vals))
-			bestcombo = ft_rrarb_ba(tmp->n, a, b, vals);
+		if (bestcombo > ft_rarb_ba(nbr, a, b, vals))
+			bestcombo = ft_rarb_ba(nbr, a, b, vals);
+		if (bestcombo > ft_rrarrb_ba(nbr, a, b, vals))
+			bestcombo = ft_rrarrb_ba(nbr, a, b, vals);
+		if (bestcombo > ft_rrbra_ba(nbr, a, b, vals))
+			bestcombo = ft_rrbra_ba(nbr, a, b, vals);
+		if (bestcombo > ft_rrarb_ba(nbr, a, b, vals))
+			bestcombo = ft_rrarb_ba(nbr, a, b, vals);
 		tmp = tmp->next;
 	}
 	return (bestcombo);
@@ -64,7 +64,7 @@ int ft_combo_ba(int nbr, t_stack *a, t_stack *b, t_vals *vals)
 comparazione fra mosse migliori e risultati delle varie operazioni;
 fatto quato applica l'operazione indicata con ft_apply* per modificare 
 gli stack in modo corretto*/
-void ft_apply_combo_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals)
+void	ft_apply_combo_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals)
 {
 	t_stack	*tmp;
 	int		bestcombo;
@@ -84,13 +84,13 @@ void ft_apply_combo_ab(int nbr, t_stack **a, t_stack **b, t_vals *vals)
 		else
 		{
 			tmp = tmp->next;
-			continue ; // per evitare che nel caso in cui non trova nessuna delle condizioni che lo soddisfa scorre la lista e poi continua il controllo 
+			continue ;
 		}
 		break ;
 	}
 }
 
-void ft_apply_combo_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
+void	ft_apply_combo_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
 {
 	t_stack	*tmp;
 	int		bestcombo;
@@ -99,9 +99,9 @@ void ft_apply_combo_ba(int nbr, t_stack **a, t_stack **b, t_vals *vals)
 	bestcombo = ft_combo_ba(nbr, *a, *b, vals);
 	while (tmp)
 	{
-		if (bestcombo == ft_rbra_ba(tmp->n, *a, *b, vals))
+		if (bestcombo == ft_rarb_ba(tmp->n, *a, *b, vals))
 			ft_apply_rarb_ba(tmp->n, a, b, vals);
-		else if (bestcombo == ft_rrbrra_ba(tmp->n, *a, *b, vals))
+		else if (bestcombo == ft_rrarrb_ba(tmp->n, *a, *b, vals))
 			ft_apply_rrarrb_ba(tmp->n, a, b, vals);
 		else if (bestcombo == ft_rrarb_ba(tmp->n, *a, *b, vals))
 			ft_apply_rrarb_ba(tmp->n, a, b, vals);

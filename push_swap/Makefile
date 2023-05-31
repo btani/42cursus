@@ -28,7 +28,7 @@ SRCS = $(addprefix $(SRCS_DIR),\
 		mechanicalturk.c moves_ab_algo.c moves_ba_algo.c\
 		op_ab_algo.c op_ba_algo.c operation_a.c operation_b.c\
 		operation_double.c push_swap.c sort_algo.c sort.c\
-		utils_lst.c utils_lst2.c)
+		utils_lst.c utils_lst2.c atoi.c)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -49,12 +49,12 @@ $(NAME): $(OBJS)
 	
 clean:
 	rm -rf $(OBJS)
-#	make clean -C Libft
+	make clean -C Libft
 	@echo "$(PURPLE)Objs rimossi! $(NO_COLOR)"
 	
 fclean: clean
 	rm -rf $(NAME)
-#	make fclean -C Libft
+	make fclean -C Libft
 	@echo "$(PURPLE)Srcs rimosse! $(NO_COLOR)"
 	
 re: fclean all

@@ -9,36 +9,32 @@
 /*   Updated: 2023/03/27 20:22:49 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-void    ft_free(t_stack **stack)
+void	ft_free(t_stack **stack)
 {
-    t_stack *temp;
+	t_stack	*temp;
 
-    if (!stack)
-        return ;
-    while (*stack)
-    {
-        temp = (*stack)->next;
-        (*stack)->n = 0;
-        free(*stack);
-        *stack = temp;
-    }
+	if (!stack)
+		return ;
+	while (*stack)
+	{
+		temp = (*stack)->next;
+		(*stack)->n = 0;
+		free(*stack);
+		*stack = temp;
+	}
 }
 
 //free della stringa con i valori ordinati
-void    ft_free_str(char **str)
+void	ft_free_str(char **str)
 {
-    char    *nd1;
-    
-    if (!str)
-        return ;
-    while (*str)
-    {
-        nd1 = *str;
-        str++;
-        free(nd1);
-    }
-    *str = NULL;
+	int	i;
+
+	i = 0;
+	if (!str)
+		return ;
+	while (str[i])
+		free(str[i++]);
+	free(str);
 }
