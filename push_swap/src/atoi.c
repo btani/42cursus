@@ -46,7 +46,8 @@ int	ft_atoi_ps(const char *nptr, t_stack **a, char **tmp)
 		res = (res * 10) + (*nptr - '0');
 		nptr++;
 	}
-	if ((sign * res) > 2147483647 || (sign * res) < -2147483648 || *nptr != '\0')
+	if ((sign * res) > 2147483647 || (sign * res) < -2147483648
+		|| *nptr != '\0')
 		ft_norm_atoi(nptr, a, tmp);
 	return (res * sign);
 }

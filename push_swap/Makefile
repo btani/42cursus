@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 GREEN = \033[0;32m
 YELLOW = \033[0;33m
@@ -38,12 +38,12 @@ OBJS = $(SRCS:.c=.o)
 
 LIBFT = ./Libft/libft.a
 
-all: lib $(NAME)
+all: $(NAME)
 
 lib: 
 	make bonus -C ./Libft
 
-$(NAME): $(OBJS)
+$(NAME): lib $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)
 	@echo "$(GREEN)Sources compilate! $(NO_COLOR)"
 	
