@@ -32,22 +32,17 @@ void	ft_empty_line_check(char *map, t_game *game)
 
 	i = 0;
 	len = ft_strlen(map);
-	if (map[0] == '\n')
+	if (map[0] == '\n' || map[len] == '\n')
 	{
 		free(map);
-		ft_error_msg("\033[0;31mInvalid map, empty line at the beginning\033[0m", game);
-	}
-	else if (map[len] == '\n')
-	{
-		free(map);
-		ft_error_msg("\033[0;31mInvalid map, empty line at the end\033[0m", game);
+		ft_error_msg("\033[0;31mError!Empty space!\033[0m", game);
 	}
 	while (map[i + 1])
 	{
 		if (map[i] == '\n' && map[i + 1] == '\n')
 		{
 			free(map);
-			ft_error_msg("\033[0;31mInvalid map, empty line in the middle\033[0m", game);
+			ft_error_msg("\033[0;31mError!In middle empty line!\033[0m", game);
 		}
 		i++;
 	}
@@ -56,15 +51,12 @@ void	ft_empty_line_check(char *map, t_game *game)
 char	*ft_joinstr(char **s1, const char *s2)
 {
 	char	*str;
-	
+
 	if (!*s1 || !s2)
 		return (NULL);
 	str = (char *)ft_calloc((ft_strlen(*s1) + ft_strlen(s2)) + 1, sizeof(char));
 	if (!str)
-	{
-		free(str);
 		return (NULL);
-	}
 	ft_strlcpy(str, *s1, ft_strlen(*s1) + 1);
 	ft_strlcat(str, s2, ft_strlen(*s1) + ft_strlen(s2) + 1);
 	free(*s1);
@@ -76,14 +68,11 @@ void	ft_init_map(t_game *game, char *av)
 	char	*tmp_map;
 	char	*tmp_line;
 	int		fd;
-	//char **temp;
 
-
-	//temp = NULL;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
-		ft_error_msg("\033[0;31mOps impossible to open the map\033[0m", game);
-	tmp_map = ft_strdup("");
+		ft_error_msg("\033[0;31mOps impossible to open the map!\033[0m", game);
+	tmp_map = ft_calloc(1, sizeof(char *));
 	game->map.lines = 0;
 	while (true)
 	{
@@ -97,17 +86,12 @@ void	ft_init_map(t_game *game, char *av)
 	close(fd);
 	ft_empty_line_check(tmp_map, game);
 	game->map.full = ft_split(tmp_map, '\n');
-	game->map_alloc = true;
-	/*temp = (char **)malloc(sizeof(char *) * game->map.lines);
-	if (temp == NULL)
-		ft_error_msg("\033[0;31mError! Memory allocation failed\033[0m", game);
-	temp = ft_split(tmp_map, '\n');
-		ft_memcpy(temp, game->map.full, sizeof(game->map.full));
-	if (ft_flood_fill(temp, game->xpm_ptr, game->map.player))
+	if (game->map.full[0] == NULL)
 	{
-		free(temp);
-		ft_error_msg("\033[0;31mError! the E/C not reachable!\033[0m", game);
+		free(tmp_map);
+		ft_free_matrix(game->map.full);
+		ft_error_msg("\033[0;31mOps empty map!\033[0m", game);
 	}
-	free(temp);*/
+	game->map_alloc = true;
 	free(tmp_map);
 }

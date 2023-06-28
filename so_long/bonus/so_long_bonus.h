@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 16:20:58 by btani             #+#    #+#             */
-/*   Updated: 2023/03/05 16:21:38 by btani            ###   ########.fr       */
+/*   Created: 2023/02/10 20:21:48 by btani             #+#    #+#             */
+/*   Updated: 2023/02/10 20:35:48 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../minilibx-linux/mlx.h"
 # include "../libraries/Libft/libft.h"
@@ -74,11 +74,12 @@ typedef struct s_game
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_map	map;
+	t_image	xpm_ptr;
 	t_image	floor;
 	t_image	wall;
 	t_image	collectible;
-	t_image	open_exit;
-	t_image	close_exit;
+	t_image	open_ex;
+	t_image	close_ex;
 	t_image	player_f;
 	t_image	player_b;
 	t_image	player_l;
@@ -109,8 +110,13 @@ int		ft_input(int key, t_game *game);
 void	ft_move_player(t_game *game, int new_y, int new_x, int player_sprite);
 int		ft_close_game(t_game *game);
 int		ft_victory(t_game *game);
-int		ft_lose_game(t_game *game);
 void	ft_destroy_img(t_game *game);
 void	ft_free_mem(t_game *game);
 void	ft_movements(t_game *game);
+void	ft_find(char **temp, t_image size, t_position pos);
+void	ft_flood_fill(char **temp, int x, int y);
+char	**ft_copy_map(t_game *game);
+void	ft_reset_flood(t_game *game, char **temp_map);
+void	ft_free_matrix(char **matrix);
+int	ft_lose_game(t_game *game);
 #endif

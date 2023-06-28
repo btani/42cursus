@@ -24,12 +24,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define GREEN = \033[0;32m
-# define RED = \033[0;31m
-# define YELLOW = \033[0;33m
-# define PURPLE = \033[0;35m
-# define NO_COLOR = \033[0m
-
 # define WALL '1'
 # define FLOOR '0'
 # define COLLECTIBLE 'C'
@@ -83,8 +77,8 @@ typedef struct s_game
 	t_image	floor;
 	t_image	wall;
 	t_image	collectible;
-	t_image	open_exit;
-	t_image	close_exit;
+	t_image	open_ex;
+	t_image	close_ex;
 	t_image	player_f;
 	t_image	player_b;
 	t_image	player_l;
@@ -118,5 +112,8 @@ void	ft_destroy_img(t_game *game);
 void	ft_free_mem(t_game *game);
 void	ft_movements(t_game *game);
 void	ft_find(char **temp, t_image size, t_position pos);
-int	ft_flood_fill(char **tab, t_image size, t_position begin);
+void	ft_flood_fill(char **temp, int x, int y);
+char	**ft_copy_map(t_game *game);
+void	ft_reset_flood(t_game *game, char **temp_map);
+void	ft_free_matrix(char **matrix);
 #endif

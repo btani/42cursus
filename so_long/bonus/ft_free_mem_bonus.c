@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 17:08:42 by btani             #+#    #+#             */
-/*   Updated: 2023/03/05 17:09:45 by btani            ###   ########.fr       */
+/*   Created: 2023/02/22 15:39:26 by btani             #+#    #+#             */
+/*   Updated: 2023/02/22 15:39:28 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "so_long_bonus.h"
 
 void	ft_free_map(t_game *game)
@@ -22,12 +21,25 @@ void	ft_free_map(t_game *game)
 	free(game->map.full);
 }
 
+void	ft_free_matrix(char **matrix)
+{
+	int y;
+
+	y = 0;
+	while(matrix[y])
+	{
+		free(matrix[y]);
+		y++;
+	}
+	free(matrix);
+}
+
 void	ft_destroy_img(t_game *game)
 {
 	mlx_destroy_image(game->mlx_ptr, game->floor.xpm_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->wall.xpm_ptr);
-	mlx_destroy_image(game->mlx_ptr, game->close_exit.xpm_ptr);
-	mlx_destroy_image(game->mlx_ptr, game->open_exit.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->close_ex.xpm_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->open_ex.xpm_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->collectible.xpm_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->player_f.xpm_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->player_b.xpm_ptr);

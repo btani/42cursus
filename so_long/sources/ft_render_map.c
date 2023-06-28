@@ -38,9 +38,9 @@ void	ft_which_sprite(t_game *game, int y, int x)
 	else if (component == EXIT)
 	{
 		if (game->map.collects == 0)
-			ft_put_image_to_wind(game, game->open_exit, y, x);
+			ft_put_image_to_wind(game, game->open_ex, y, x);
 		else
-			ft_put_image_to_wind(game, game->close_exit, y, x);
+			ft_put_image_to_wind(game, game->close_ex, y, x);
 	}
 	else if (component == PLAYER)
 		ft_which_player(game, y, x);
@@ -48,7 +48,8 @@ void	ft_which_sprite(t_game *game, int y, int x)
 
 void	ft_put_image_to_wind(t_game *game, t_image sprite, int row, int col)
 {
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite.xpm_ptr, col * sprite.x, row * sprite.y);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		sprite.xpm_ptr, col * sprite.x, row * sprite.y);
 }
 
 void	ft_movements(t_game *game)

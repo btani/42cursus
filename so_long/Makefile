@@ -35,7 +35,7 @@ SRCS =	$(addprefix $(SRCS_DIR),\
 
 SRCS_BONUS = $(addprefix $(SRCS_DIR_BONUS),\
 	ft_check_map_bonus.c ft_free_mem_bonus.c ft_start_game_bonus.c ft_close_game_bonus.c\
-	ft_init_map_bonus.c so_long_bonus.c ft_input_bonus.c ft_render_map_bonus.c)
+	ft_init_map_bonus.c so_long_bonus.c ft_input_bonus.c ft_render_map_bonus.c flood_fill_bonus.c)
 
 LIBFT = ./libraries/Libft/libft.a
 

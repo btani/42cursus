@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 17:05:11 by btani             #+#    #+#             */
-/*   Updated: 2023/03/05 17:08:00 by btani            ###   ########.fr       */
+/*   Created: 2023/02/28 17:57:08 by btani             #+#    #+#             */
+/*   Updated: 2023/02/28 17:57:12 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "so_long_bonus.h"
 
 void	ft_move_player(t_game *game, int new_y, int new_x, int player_sprite)

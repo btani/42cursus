@@ -15,7 +15,6 @@ int	ft_victory(t_game *game)
 {
 	ft_printf("Moves: %d\n", ++game->movs);
 	ft_free_mem(game);
-	//inserisci immagine "you win"
 	exit (EXIT_FAILURE);
 }
 

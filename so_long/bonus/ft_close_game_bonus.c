@@ -5,26 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: btani <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 17:10:12 by btani             #+#    #+#             */
-/*   Updated: 2023/03/05 17:13:47 by btani            ###   ########.fr       */
+/*   Created: 2023/02/22 15:36:45 by btani             #+#    #+#             */
+/*   Updated: 2023/02/22 15:36:46 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "so_long_bonus.h"
 
 int	ft_lose_game(t_game *game)
 {
 	ft_printf("Moves: %d\n", ++game->movs);
-        ft_free_mem(game);
-        //inserisci immagine "you lose"
-        exit (EXIT_FAILURE);	
+	ft_free_mem(game);
+	exit (EXIT_FAILURE);
 }
 
 int	ft_victory(t_game *game)
 {
 	ft_printf("Moves: %d\n", ++game->movs);
 	ft_free_mem(game);
-	//inserisci immagine "you win"
 	exit (EXIT_FAILURE);
 }
 
