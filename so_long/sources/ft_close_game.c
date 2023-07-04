@@ -15,6 +15,7 @@ int	ft_victory(t_game *game)
 {
 	ft_printf("Moves: %d\n", ++game->movs);
 	ft_free_mem(game);
+	ft_printf("\033[0;32mYou win!\n\033[0m");
 	exit (EXIT_FAILURE);
 }
 
@@ -28,9 +29,7 @@ int	ft_close_game(t_game *game)
 
 int	ft_error_msg(char *msg, t_game *game)
 {
-	if (game->map_alloc == true)
-		ft_free_map(game);
-	free(game);
+	ft_free_mem(game);
 	ft_printf("%s\n", msg);
 	exit (EXIT_FAILURE);
 }

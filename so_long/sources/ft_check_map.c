@@ -13,15 +13,15 @@
 
 void	ft_check_lines(t_game *game)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (x < game->map.columns)
 	{
 		if (game->map.full[0][x] != WALL)
-			ft_error_msg("\033[0;31mError! Wall missing-first line!\033[0m", game);
+			ft_error_msg("\033[0;31mError! Wall missing in lines!\033[0m", game);
 		else if (game->map.full[game->map.lines - 1][x] != WALL)
-			ft_error_msg("\033[0;31mError! Wall missing-last line!\033[0m", game);
+			ft_error_msg("\033[0;31mError! Wall missing in lines!\033[0m", game);
 		x++;
 	}
 }
@@ -36,9 +36,9 @@ void	ft_check_columns(t_game *game)
 		if ((int) ft_strlen(game->map.full[y]) != game->map.columns)
 			ft_error_msg("\033[0;31mError! The map isn't complete!\033[0m", game);
 		if (game->map.full[y][0] != WALL)
-			ft_error_msg("\033[0;31mError! Wall missing-first col!\033[0m", game);
+			ft_error_msg("\033[0;31mError! Wall missingin col!\033[0m", game);
 		else if (game->map.full[y][game->map.columns - 1] != WALL)
-			ft_error_msg("\033[0;31mError! Wall missing-last col!\033[0m", game);
+			ft_error_msg("\033[0;31mError! Wall missing in col!\033[0m", game);
 		y++;
 	}
 }
@@ -87,7 +87,7 @@ void	ft_check_map(t_game *game)
 	char	**temp_map;
 
 	if (game->map.lines == game->map.columns)
-			ft_error_msg("\033[0;31mError! The map is squared!\033[0m", game);
+		ft_error_msg("\033[0;31mError! The map is squared!\033[0m", game);
 	ft_check_lines(game);
 	ft_check_columns(game);
 	ft_num_of_components(game);

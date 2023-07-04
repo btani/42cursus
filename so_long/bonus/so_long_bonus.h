@@ -118,5 +118,6 @@ void	ft_flood_fill(char **temp, int x, int y);
 char	**ft_copy_map(t_game *game);
 void	ft_reset_flood(t_game *game, char **temp_map);
 void	ft_free_matrix(char **matrix);
-int	ft_lose_game(t_game *game);
+int		ft_lose_game(t_game *game);
+void	ft_check_void_map(t_game *game, char *tmp_map);
 #endif

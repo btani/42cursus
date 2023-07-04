@@ -17,7 +17,7 @@ void	ft_init_variab(t_game *game)
 	game->map.exit = 0;
 	game->map.players = 0;
 	game->movs = 0;
-	game->map.columns = ft_strlen(game->map.full[0]); //-1
+	game->map.columns = ft_strlen(game->map.full[0]);
 	game->player_sprite = RIGHT;
 }
 
@@ -54,7 +54,9 @@ t_image	ft_put_sprite(void *mlx, char *path, t_game *game)
 	t_image	sprite;
 
 	sprite.xpm_ptr = mlx_xpm_file_to_image(mlx, path, &sprite.x, &sprite.y);
-	if (sprite.xpm_ptr == NULL)
+	if (!sprite.xpm_ptr)
+	{
 		ft_error_msg("Error!There isn't any image", game);
+	}
 	return (sprite);
 }

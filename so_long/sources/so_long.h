@@ -110,10 +110,10 @@ int		ft_close_game(t_game *game);
 int		ft_victory(t_game *game);
 void	ft_destroy_img(t_game *game);
 void	ft_free_mem(t_game *game);
-void	ft_movements(t_game *game);
 void	ft_find(char **temp, t_image size, t_position pos);
 void	ft_flood_fill(char **temp, int x, int y);
 char	**ft_copy_map(t_game *game);
 void	ft_reset_flood(t_game *game, char **temp_map);
 void	ft_free_matrix(char **matrix);
+void	ft_check_void_map(t_game *game, char *tmp_map);
 #endif

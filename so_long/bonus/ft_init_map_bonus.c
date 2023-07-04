@@ -63,6 +63,16 @@ char	*ft_joinstr(char **s1, const char *s2)
 	return (str);
 }
 
+void	ft_check_void_map(t_game *game, char *tmp_map)
+{
+	if (game->map.full[0] == NULL)
+	{
+		free(tmp_map);
+		ft_free_matrix(game->map.full);
+		ft_error_msg("\033[0;31mOps empty map!\033[0m", game);
+	}
+}
+
 void	ft_init_map(t_game *game, char *av)
 {
 	char	*tmp_map;
@@ -86,12 +96,7 @@ void	ft_init_map(t_game *game, char *av)
 	close(fd);
 	ft_empty_line_check(tmp_map, game);
 	game->map.full = ft_split(tmp_map, '\n');
-	if (game->map.full[0] == NULL)
-	{
-		free(tmp_map);
-		ft_free_matrix(game->map.full);
-		ft_error_msg("\033[0;31mOps empty map!\033[0m", game);
-	}
+	ft_check_void_map(game, tmp_map);
 	game->map_alloc = true;
 	free(tmp_map);
 }

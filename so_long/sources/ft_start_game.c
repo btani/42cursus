@@ -17,7 +17,7 @@ void	ft_init_variab(t_game *game)
 	game->map.exit = 0;
 	game->map.players = 0;
 	game->movs = 0;
-	game->map.columns = ft_strlen(game->map.full[0]); //-1
+	game->map.columns = ft_strlen(game->map.full[0]);
 	game->player_sprite = RIGHT;
 }
 
@@ -30,6 +30,18 @@ void	ft_init_mlx(t_game *game)
 			32 * game->map.lines, "SO_LONG");
 	if (game->win_ptr == NULL)
 		ft_error_msg("Error!Ops, couldn't open the window", game);
+}
+
+t_image	ft_put_sprite(void *mlx, char *path, t_game *game)
+{
+	t_image	sprite;
+
+	sprite.xpm_ptr = NULL;
+	if (open(path, O_RDONLY))
+		sprite.xpm_ptr = mlx_xpm_file_to_image(mlx, path, &sprite.x, &sprite.y);
+	if (sprite.xpm_ptr == NULL)
+		ft_error_msg("Error!There isn't any image", game);
+	return (sprite);
 }
 
 void	ft_sprites(t_game *game)
@@ -46,14 +58,4 @@ void	ft_sprites(t_game *game)
 	game->player_b = ft_put_sprite(mlx, "textures/sprites/player_b.xpm", game);
 	game->player_l = ft_put_sprite(mlx, "textures/sprites/player_l.xpm", game);
 	game->player_r = ft_put_sprite(mlx, "textures/sprites/player_r.xpm", game);
-}
-
-t_image	ft_put_sprite(void *mlx, char *path, t_game *game)
-{
-	t_image	sprite;
-
-	sprite.xpm_ptr = mlx_xpm_file_to_image(mlx, path, &sprite.x, &sprite.y);
-	if (sprite.xpm_ptr == NULL)
-		ft_error_msg("Error!There isn't any image", game);
-	return (sprite);
 }
