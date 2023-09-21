@@ -11,28 +11,7 @@
 /* ************************************************************************** */
 #include "philosopher.h"
 
-/* allocazione degli elementi */
-void	ft_allocation(char **av, t_data *data)
-{
-	data->nbr_philo = ft_atoi(av[1]);
-	if (data->nbr_philo < 1)
-		ft_exit("too few philosophers");
-	data->philos = (pthread_t *)ft_calloc(data->nbr_philo, sizeof(pthread_t));
-	if (!data->philos)
-		ft_exit("'data->philos'->allocation failed");
-	data->forks = (pthread_mutex_t *)ft_calloc(data->nbr_philo,
-			sizeof(pthread_mutex_t));
-	if (!data->forks)
-		ft_exit("'data->forks'->allocation failed");
-	data->last_ate = (time_t *)ft_calloc(data->nbr_philo, sizeof(time_t));
-	if (!data->last_ate)
-		ft_exit("'data->last_ate'->allocation failed");
-	data->nbr_meal = (int *)ft_calloc(data->nbr_philo, sizeof(int));
-	if (!data->nbr_meal)
-		ft_exit("'data->nbr_meal'->allocation failed");
-}
-
-/*getttimeofday(): usata per rilevare il current time con precisioni in microsecondi
+/*getttimeofday(): rileva il current time in microsecondi
 struct timeval *tv: puntatore a una struttura che conserva il current time*/
 void	ft_initialize(int ac, char **av, t_data *data)
 {
@@ -43,7 +22,7 @@ void	ft_initialize(int ac, char **av, t_data *data)
 	gettimeofday(&data->tv, NULL);
 	data->start = ((time_t)(data->tv.tv_sec) * 1000)
 		+ ((time_t)(data->tv.tv_usec) / 1000);
-	while (i++ < data->nbr_philo)
+	while (i < data->nbr_philo)
 	{
 		data->last_ate[i] = data->start;
 		i++;
@@ -58,7 +37,7 @@ void	ft_initialize(int ac, char **av, t_data *data)
 	data->death = 0;
 }
 
-/* inizializzazione dati filosofi */
+/*inizializzazione dati filosofi*/
 void	ft_init_philos(char **av, t_data *data, t_philo *philo)
 {
 	int	i;
@@ -75,20 +54,21 @@ void	ft_init_philos(char **av, t_data *data, t_philo *philo)
 	}
 }
 
-/*inizializzazione mutex del lock e delle forks
-pthread_mutex_init(): usata per inizializzare un mutex
-int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr);*/
+/*inizializzo mutex del lock e delle forks
+con pthread_mutex_init()*/
 void	ft_init_mutex(t_data *data, t_philo *philo)
 {
-	(void) philo;
 	int	count;
+
 	count = 0;
+	(void) *philo;
 	if (pthread_mutex_init(&data->lock, NULL) != 0)
 		ft_exit("Mutex inizialization failed");
-	while (count++ < data->nbr_philo)
+	while (count < data->nbr_philo)
 	{
 		if (pthread_mutex_init(&data->forks[count], NULL))
 			ft_exit("Mutex inizialization failed");
+		count++;
 	}
 }
 
@@ -96,11 +76,11 @@ void	ft_init_mutex(t_data *data, t_philo *philo)
 -pthread_create(): usata per creare nuovi threads
 int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
 void *(*start_routine)(void *), void *arg);
--pthread_join(): usata per aspettare che un thread specifico finisca
-la sua esecuzione prima di permettere al thread principale di continuare
+-pthread_join(): aspettare che un thread specifico finisca la sua
+esecuzione prima di permettere al thread principale di continuare
 int pthread_join(pthread_t thread, void **retval);
-void **retval: puntatore a un puntatore dove l'exit status  del thread
-viene conservato una volta che ha finito l'esecuzione.
+void **retval: puntatore a un puntatore in cui viene conservato
+l'exit status del thread una volta finita l'esecuzione.
 Questo exit status e' il valore ritornato dal pthread_create()
 Se viene passato come NULL significa che non ci serve l'exit status*/
 int	ft_init_threads(t_data *data, t_philo *philo)

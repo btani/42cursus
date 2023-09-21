@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "philosopher.h"
 
-void	ft_take_fork(t_data *data, t_philo *philo)
+void	ft_fork_routine(t_data *data, t_philo *philo)
 {
 	pthread_mutex_lock(&data->lock);
 	if (data->death != 1)
@@ -23,7 +23,7 @@ void	ft_take_fork(t_data *data, t_philo *philo)
 	pthread_mutex_unlock(&data->lock);
 }
 
-void	ft_eat(t_data *data, t_philo *philo)
+void	ft_eat_routine(t_data *data, t_philo *philo)
 {
 	pthread_mutex_lock(&data->lock);
 	if (data->death != 1)
@@ -38,7 +38,7 @@ void	ft_eat(t_data *data, t_philo *philo)
 	pthread_mutex_unlock(&data->lock);
 }
 
-void	ft_sleep(t_data *data, t_philo *philo)
+void	ft_sleep_routine(t_data *data, t_philo *philo)
 {
 	pthread_mutex_lock(&data->lock);
 	if (data->death != 1)
@@ -50,7 +50,7 @@ void	ft_sleep(t_data *data, t_philo *philo)
 	pthread_mutex_unlock(&data->lock);
 }
 
-void	ft_think(t_data *data, t_philo *philo)
+void	ft_think_routine(t_data *data, t_philo *philo)
 {
 	pthread_mutex_lock(&data->lock);
 	if (data->death != 1)
@@ -61,4 +61,3 @@ void	ft_think(t_data *data, t_philo *philo)
 	}
 	pthread_mutex_unlock(&data->lock);
 }
-

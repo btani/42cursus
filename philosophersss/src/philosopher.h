@@ -59,13 +59,15 @@ typedef struct s_data
 	struct timeval	tv;
 }			t_data;
 
-/* ALLOC_INIT.C */
-void	ft_allocation(char **av, t_data *data);
+/* INIT.C */
 void	ft_initialize(int ac, char **av, t_data *data);
 void	ft_init_philos(char **av, t_data *data, t_philo *philo);
 void	ft_init_mutex(t_data *data, t_philo *philo);
 int		ft_init_threads(t_data *data, t_philo *philo);
 void	ft_one_philo(t_philo *philo);
+
+/* MAIN .C */
+void	ft_allocation(char **av, t_data *data);
 
 /* MUTEX_CHECK */
 void	ft_check_meal(t_data *data, int *n_death);
@@ -74,10 +76,10 @@ void	ft_check_mutex(t_data *data);
 void	ft_get_time(t_data *data);
 
 /* ROUTINE.C */
-void	ft_take_fork(t_data *data, t_philo *philo);
-void	ft_eat(t_data *data, t_philo *philo);
-void	ft_sleep(t_data *data, t_philo *philo);
-void	ft_think(t_data *data, t_philo *philo);
+void	ft_fork_routine(t_data *data, t_philo *philo);
+void	ft_eat_routine(t_data *data, t_philo *philo);
+void	ft_sleep_routine(t_data *data, t_philo *philo);
+void	ft_think_routine(t_data *data, t_philo *philo);
 
 /* UTILS.C */
 int		ft_exit(char *str);

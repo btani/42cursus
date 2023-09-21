@@ -12,7 +12,7 @@
 #include "libft.h"
 
 int	ft_countdec(int n)
-{	
+{
 	int			i;
 	long int	a;
 

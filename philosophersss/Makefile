@@ -22,7 +22,7 @@ NO_COLOR = \033[0m
 
 SRCS_DIR = ./src/
 
-SRCS = $(addprefix $(SRCS_DIR), alloc_init.c main.c mutex_check.c routine.c utils.c)
+SRCS = $(addprefix $(SRCS_DIR), init.c main.c mutex_check.c routine.c utils.c)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -39,17 +39,17 @@ lib:
 
 $(NAME): lib $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)
-	@echo "$(GREEN)Sources compilate! $(NO_COLOR)"
+	@echo "$(GREEN)Sources compilate con successo! $(NO_COLOR)"
 	
 clean:
 	rm -rf $(OBJS)
 	make clean -C Libft
-	@echo "$(PURPLE)Objs rimossi! $(NO_COLOR)"
+	@echo "$(PURPLE)Objs rimossi con successo! $(NO_COLOR)"
 	
 fclean: clean
 	rm -rf $(NAME)
 	make fclean -C Libft
-	@echo "$(PURPLE)Srcs rimosse! $(NO_COLOR)"
+	@echo "$(PURPLE)Sources rimosse con successo! $(NO_COLOR)"
 	
 re: fclean all
 

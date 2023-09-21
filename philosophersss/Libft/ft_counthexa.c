@@ -12,7 +12,7 @@
 #include "libft.h"
 
 int	ft_counthexa(unsigned long n)
-{	
+{
 	int	i;
 
 	i = 0;

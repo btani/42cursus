@@ -56,8 +56,7 @@ void	ft_check_death(t_data *data, int *n_ate)
 		*n_ate = 0;
 }
 
-/*
-pthread_mutex_lock(): used for acquiring a mutex lock,
+/*pthread_mutex_lock(): used for acquiring a mutex lock,
 which is a synchronization primitive used to protect
 critical sections of code from simultaneous access by
 multiple threads. Mutex locks ensure that only one thread
